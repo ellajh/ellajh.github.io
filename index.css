@@ -1,0 +1,35 @@
+
+.container > * {
+  border: 3px solid black;
+  color: red;
+
+}
+
+.area-a {
+  grid-area: header;
+}
+.area-b {
+  grid-area: main;
+}
+.area-c {
+  grid-area: feed;
+}
+.area-d {
+  grid-area: nav;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr minmax(200px, auto);
+  grid-template-rows: minmax(100px, auto) minmax(100px, auto) 1fr;
+  grid-template-areas:
+    "header feed"
+    "nav feed"
+    "main feed";
+}
+
+
+
+h1 {
+  background-color: blue;
+}
