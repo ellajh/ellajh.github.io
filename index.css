@@ -1,35 +1,117 @@
 
-.container > * {
+body {
   border: 3px solid black;
-  color: red;
-
-}
-
-.area-a {
-  grid-area: header;
-}
-.area-b {
-  grid-area: main;
-}
-.area-c {
-  grid-area: feed;
-}
-.area-d {
-  grid-area: nav;
 }
 
 .container {
+  border: 3px solid black;
+  height: 100vh;
   display: grid;
   grid-template-columns: 1fr minmax(200px, auto);
-  grid-template-rows: minmax(100px, auto) minmax(100px, auto) 1fr;
+  grid-template-rows: minmax(150px, auto) minmax(100px, auto) 1fr;
   grid-template-areas:
     "header feed"
     "nav feed"
     "main feed";
 }
 
+.container > * {
+  border: 3px solid black;
+}
 
+.area-a {                       /*I am a flexbox*/
+  grid-area: header;
+  display: flex;
+  justify-content: center;
+}
+.area-b {                       /*I am a flexbox*/
+  grid-area: nav;
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+}
+.area-c {
+  grid-area: feed;
+}
+.area-d {
+  grid-area: main;
+}
+
+.area-b nav {                 /*I am a flex box and a flex item*/
+  /*border: 3px solid black;*/
+  display: flex;
+  align-items: center;
+
+}
+
+.area-b nav ul {              /*I am a flex box and a flex item*/
+  /*border: 3px solid black;*/
+  display: flex;
+  list-style-position: inside;
+  list-style-type: none;
+  padding: 0px;
+}
+
+.area-b nav ul li {
+  /*border: 3px solid black;*/
+  margin: 2px;
+}
 
 h1 {
-  background-color: blue;
+
+}
+
+.container-2 {
+  border: 3px solid black;
+  height: 100vh;
+  background-color: cadetblue;
+  display: grid;
+  grid-template-columns: 1fr minmax(200px, auto);
+  grid-template-rows: minmax(150px, auto) minmax(100px, auto) 1fr;
+  grid-template-areas:
+    "header feed"
+    "nav feed"
+    "main feed";
+}
+
+.container-2 > * {
+  border: 3px solid black;
+}
+
+.area-2a {                       /*I am a flexbox*/
+  grid-area: header;
+  display: flex;
+  justify-content: center;
+}
+.area-2b {                       /*I am a flexbox*/
+  grid-area: nav;
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+}
+.area-2c {
+  grid-area: feed;
+}
+.area-2d {
+  grid-area: main;
+}
+
+.area-2b nav {                 /*I am a flex box and a flex item*/
+  /*border: 3px solid black;*/
+  display: flex;
+  align-items: center;
+
+}
+
+.area-2b nav ul {              /*I am a flex box and a flex item*/
+  /*border: 3px solid black;*/
+  display: flex;
+  list-style-position: inside;
+  list-style-type: none;
+  padding: 0px;
+}
+
+.area-2b nav ul li {
+  /*border: 3px solid black;*/
+  margin: 2px;
 }
