@@ -3,48 +3,68 @@ body {
   border: 3px solid black;
 }
 
-.container {
+.sidebar {
+  height: 100%;
+  min-width: 160px;
+  max-width: 400px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-top: 20px;
+}
+
+.page1-container {
   border: 3px solid black;
   height: 100vh;
   display: grid;
-  grid-template-columns: 1fr minmax(200px, auto);
+  /*grid-template-columns: 1fr minmax(200px, auto);*/
   grid-template-rows: minmax(150px, auto) minmax(100px, auto) 1fr;
   grid-template-areas:
-    "header feed"
-    "nav feed"
-    "main feed";
+    "header"
+    "nav"
+    "main";
 }
 
-.container > * {
+.page1-container > * {
   border: 3px solid black;
 }
 
-.area-a {                       /*I am a flexbox*/
+.page1-header-area {                       /*I am a flexbox*/
   grid-area: header;
   display: flex;
   justify-content: center;
 }
-.area-b {                       /*I am a flexbox*/
+.page1-nav-area {                       /*I am a flexbox*/
   grid-area: nav;
   display: flex;
   justify-content: space-around;
   align-content: center;
 }
-.area-c {
+.page1-sidebar-area {
   grid-area: feed;
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
 }
-.area-d {
+.page1-content-area {
   grid-area: main;
 }
 
-.area-b nav {                 /*I am a flex box and a flex item*/
+.page1-nav-area nav {                 /*I am a flex box and a flex item*/
   /*border: 3px solid black;*/
   display: flex;
   align-items: center;
 
 }
 
-.area-b nav ul {              /*I am a flex box and a flex item*/
+.page1-nav-area nav ul {              /*I am a flex box and a flex item*/
   /*border: 3px solid black;*/
   display: flex;
   list-style-position: inside;
@@ -52,7 +72,7 @@ body {
   padding: 0px;
 }
 
-.area-b nav ul li {
+.page1-nav-area nav ul li {
   /*border: 3px solid black;*/
   margin: 2px;
 }
@@ -61,49 +81,50 @@ h1 {
 
 }
 
-.container-2 {
+.page2-container {
   border: 3px solid black;
   height: 100vh;
   background-color: cadetblue;
   display: grid;
-  grid-template-columns: 1fr minmax(200px, auto);
+  /*grid-template-columns: 1fr minmax(200px, auto);*/
   grid-template-rows: minmax(150px, auto) minmax(100px, auto) 1fr;
   grid-template-areas:
-    "header feed"
-    "nav feed"
-    "main feed";
+    "header"
+    "nav"
+    "main";
 }
 
-.container-2 > * {
+.page2-container > * {
   border: 3px solid black;
 }
 
-.area-2a {                       /*I am a flexbox*/
+.page2-header-area {                       /*I am a flexbox*/
   grid-area: header;
   display: flex;
   justify-content: center;
 }
-.area-2b {                       /*I am a flexbox*/
+.page2-nav-area {                       /*I am a flexbox*/
   grid-area: nav;
   display: flex;
   justify-content: space-around;
   align-content: center;
 }
-.area-2c {
+/*.area-2c {
   grid-area: feed;
-}
-.area-2d {
+}*/
+
+.page2-content-area {
   grid-area: main;
 }
 
-.area-2b nav {                 /*I am a flex box and a flex item*/
+.page2-nav-area nav {                 /*I am a flex box and a flex item*/
   /*border: 3px solid black;*/
   display: flex;
   align-items: center;
 
 }
 
-.area-2b nav ul {              /*I am a flex box and a flex item*/
+.page2-nav-area nav ul {              /*I am a flex box and a flex item*/
   /*border: 3px solid black;*/
   display: flex;
   list-style-position: inside;
@@ -111,7 +132,7 @@ h1 {
   padding: 0px;
 }
 
-.area-2b nav ul li {
+.page2-nav-area nav ul li {
   /*border: 3px solid black;*/
   margin: 2px;
 }
