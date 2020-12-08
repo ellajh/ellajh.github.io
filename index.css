@@ -4,17 +4,37 @@ body {
 }
 
 .sidebar {
+  display: grid;
+  grid-template-rows: auto 100px;
+
   height: 100%;
-  min-width: 160px;
+  min-width: 200px;
   max-width: 400px;
   position: fixed;
   z-index: 1;
   top: 0;
   right: 0;
-  background-color: #111;
+  background-color: blue;
   overflow-x: hidden;
+}
+
+.sidebar > .feed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   overflow-y: auto;
-  padding-top: 20px;
+
+}
+
+.sidebar > .feed > img {
+  margin: 10px;
+}
+
+.sidebar .button-box {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: green;
 }
 
 .page1-container {
