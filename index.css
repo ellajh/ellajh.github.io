@@ -3,6 +3,8 @@ body {
   border: 3px solid black;
 }
 
+
+
 /* CSS FOR THE SIDEBAR ELEMENT */
 
 .sidebar {
@@ -10,8 +12,7 @@ body {
   flex-direction: column;
   
   height: 100%;
-  min-width: 200px;
-  max-width: 400px;
+  width: 350px;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -92,12 +93,18 @@ body {
   grid-area: header;
   display: flex;
   justify-content: center;
+
+  padding-right: 350px;
+  padding-left: 0px;
 }
 .page1-nav-area {                       /*I am a flexbox*/
   grid-area: nav;
   display: flex;
   justify-content: space-around;
   align-content: center;
+
+  padding-right: 350px;
+  padding-left: 0px;
 }
 .page1-sidebar-area {
   grid-area: feed;
@@ -159,12 +166,18 @@ h1 {
   grid-area: header;
   display: flex;
   justify-content: center;
+
+  padding-right: 350px;
+  padding-left: 0px;
 }
 .page2-nav-area {                       /*I am a flexbox*/
   grid-area: nav;
   display: flex;
   justify-content: space-around;
   align-content: center;
+
+  padding-right: 350px;
+  padding-left: 0px;
 }
 /*.area-2c {
   grid-area: feed;
