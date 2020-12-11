@@ -55,10 +55,10 @@ body {
   justify-content: flex-end;
 }
 
-.image-and-caption > p {
-  justify-self: flex-start;
+.image-and-caption p {
   align-self: center;
   margin: 10px;
+  text-align: right;
 }
 
 .sidebar .button-box {
@@ -185,6 +185,9 @@ h1 {
 
 .page2-content-area {
   grid-area: main;
+
+  padding-right: 350px;
+  padding-left: 0px;
 }
 
 .page2-nav-area nav {                 /*I am a flex box and a flex item*/
