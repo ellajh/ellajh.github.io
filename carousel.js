@@ -9,9 +9,12 @@
 
 // Setting a variable for my Sidebar element
 let sidebar = document.getElementsByClassName("feed")[0];
-let feedObjects = document.getElementsByClassName("image-and-caption")[0];
+// Setting a variable for my Feed element
+let feedObjects = document.getElementsByClassName("image-and-caption");
 console.log(sidebar);
+console.log(feedObjects);
 
+// CODE FOR ADDING THINGS TO THE SIDEBAR
 
 // Test object
 function testForType(link) {
@@ -51,6 +54,46 @@ function addToFeed(object) {
 }
 
 addToFeed(objectTwo);
+
+// CODE FOR MAKING THE CAPTIONS VISIBLE WHEN IMAGES ARE HOVERED OVER
+function hideCaption(event) {
+    let parent = event.target.parentElement;
+    let para = parent.getElementsByTagName("p");
+    para[0].style.visibility = "hidden";
+    console.log("event triggered");
+
+}
+
+function showCaption(event) {
+    let parent = event.target.parentElement;
+    let para = parent.getElementsByTagName("p");
+    para[0].style.visibility = "visible";
+    console.log("event triggered");
+}
+
+for (i = 0; i < feedObjects.length - 1; i++) {
+    let children = feedObjects[i].getElementsByTagName("img");
+    console.log(children);
+    children[0].addEventListener("mouseover", function () {
+        showCaption(event); })
+    children[0].addEventListener("mouseout", function () {
+        hideCaption(event); })
+
+}
+
+// get child nodes
+// for every img child node
+// add event listener with div[i] passed in
+// in function, access div[i].p
+
+
+
+
+
+
+
+
+
 
 // Just some stuff to check I am correctly selecting elements
 function testElement(element) {

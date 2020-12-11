@@ -59,6 +59,8 @@ body {
   align-self: center;
   margin: 10px;
   text-align: right;
+
+  visibility: hidden;
 }
 
 .sidebar .button-box {
