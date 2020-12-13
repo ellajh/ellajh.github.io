@@ -36,6 +36,18 @@ let objectTwo = {
 }
 console.log(objectTwo.caption);
 
+/*<iframe src="https://open.spotify.com/embed/track/0lwkL0G07NYtLrQCugi8lX" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>*/
+
+let pineapple = {
+    imageAddress: 'https://open.spotify.com/embed/track/0lwkL0G07NYtLrQCugi8lX',
+    caption: "Cant get enough of this track at the moment",
+    width: "250",
+    height: "auto",
+    frameborder: "0",
+    allowtransparency: "true"
+    //allow: "encrypted-media"
+}
+
 //Function to add object to Feed
 function addToFeed(object) {
     let newImageCaptionDiv = document.createElement("div");
@@ -53,7 +65,30 @@ function addToFeed(object) {
     sidebar.appendChild(newImageCaptionDiv);
 }
 
+//Function to add object to Feed
+function addIframeToFeed(object) {
+    let newImageCaptionDiv = document.createElement("div");
+    newImageCaptionDiv.classList.add("image-and-caption");
+
+    let caption = document.createElement("p");
+    let captionTextNode = document.createTextNode(object.caption);
+    caption.appendChild(captionTextNode);
+    newImageCaptionDiv.appendChild(caption);
+    
+    let iframe = document.createElement("iframe");
+    iframe.src = object.imageAddress;
+    iframe.width = object.width;
+    /*iframe.height = object.height;*/
+    iframe.frameborder = object.frameborder;
+    iframe.allowtransparency = object.allowtransparency;
+    iframe.allow = object.allow;
+    newImageCaptionDiv.appendChild(iframe);
+
+    sidebar.appendChild(newImageCaptionDiv);
+}
+
 addToFeed(objectTwo);
+addIframeToFeed(pineapple);
 
 // CODE FOR MAKING THE CAPTIONS VISIBLE WHEN IMAGES ARE HOVERED OVER
 function hideCaption(event) {
@@ -71,23 +106,34 @@ function showCaption(event) {
     console.log("event triggered");
 }
 
-for (i = 0; i < feedObjects.length - 1; i++) {
-    let children = feedObjects[i].getElementsByTagName("img");
-    console.log(children);
-    children[0].addEventListener("mouseover", function () {
+for (i = 0; i < feedObjects.length; i++) {
+    let targetObject;
+    if (feedObjects[i].querySelector("h1") != null) {
+        targetObject = querySelector("h1");
+    } else if (feedObjects[i].querySelector("img") != null) {
+        targetObject = feedObjects[i].querySelector("img");
+    } else if (feedObjects[i].querySelector("iframe") != null) {
+        targetObject = feedObjects[i].querySelector("iframe");
+    }
+
+    targetObject.addEventListener("mouseover", function (event) {
         showCaption(event); })
-    children[0].addEventListener("mouseout", function () {
+    targetObject.addEventListener("mouseout", function (event) {
         hideCaption(event); })
 
+
+    /*let children = feedObjects[i].getElementsByTagName("img");
+    console.log(children);
+    children[0].addEventListener("mouseover", function (event) {
+        showCaption(event); })
+    children[0].addEventListener("mouseout", function (event) {
+        hideCaption(event); })*/
 }
 
 // get child nodes
 // for every img child node
 // add event listener with div[i] passed in
 // in function, access div[i].p
-
-
-
 
 
 
