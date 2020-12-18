@@ -8,8 +8,12 @@ body {
 /* CSS FOR THE SIDEBAR ELEMENT */
 
 .sidebar {
+  /*border: 3px solid pink;*/
+
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
   
   height: 100%;
   width: 400px;
@@ -21,13 +25,10 @@ body {
   overflow-x: hidden;
 }
 
-.sidebar > * {
-  /*border: 3px solid black;*/
-}
-
 .sidebar > .feed {
   display: flex;
   flex-direction: column;
+  
   align-items: center;
   overflow-y: auto;
   overflow-x: hidden;
@@ -41,21 +42,12 @@ body {
   display: none; /* Hides scrollbar for Chrome, Safari, and Opera */
 }
 
-.sidebar > .feed img {
+.feed-styling {
   width: 250px;
   height: auto;
-  margin:0px;
+  margin: 0px;
   padding: 10px;
-  background-color: gray;
-  opacity: 1;
-}
-
-.sidebar > .feed iframe {
   border: none;
-  width: 250px;
-  height: auto;
-  margin:0px;
-  padding: 10px;
   background-color: gray;
   opacity: 1;
 }
@@ -75,9 +67,10 @@ body {
 }
 
 .sidebar .button-box {
-  height: 100px;
-  width: 270px;
+  min-height: 100px;
+  flex-grow: 1;
   align-self: flex-end;
+
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -116,7 +109,7 @@ body {
   justify-content: space-around;
   align-content: center;
 
-  padding-right: 500px;
+  padding-right: 400px;
   padding-left: 0px;
 }
 .page1-sidebar-area {

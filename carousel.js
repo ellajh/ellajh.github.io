@@ -1,104 +1,101 @@
-// I want to be able to point to a link in the javascript
-// and supply a caption 
-// I want JS functions to return an object containing an image,
-// a link, and a caption
-// Then add then to my sidebar
 
-
-
-
-// Setting a variable for my Sidebar element
+// Getting and assigning my sidebar element to variable "sidebar"
 let sidebar = document.getElementsByClassName("feed")[0];
-// Setting a variable for my Feed element
+// Getting and assigning my feed element to variable "feed"
 let feedObjects = document.getElementsByClassName("image-and-caption");
-console.log(sidebar);
-console.log(feedObjects);
 
-// CODE FOR ADDING THINGS TO THE SIDEBAR
+// Creating an master object containing all the items that I want to add to my feed as child objects
+let sidebarObject = [
+    generateSpotifyObject('<iframe src="https://open.spotify.com/embed/track/0lwkL0G07NYtLrQCugi8lX" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>', "Can't get enough of Blue Lab Beats!"),
+    generateImageObject("./resources/images/shche_-team-Gl695fYRRH8-unsplash.jpg", 
+                        "My image caption goes here"),
+    generateSpotifyObject('<iframe src="https://open.spotify.com/embed/album/7s5HYHvCsWsbLFsr3smBiQ" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>', 'Always one of my favourite peaceful electronic albums to work to'),
+]
 
-// Test object
-function testForType(link) {
-    // I need to write this code 
+console.log(sidebarObject);
+
+
+
+// CODE FOR TAKING A LINK TO AN RESOURCE AND RETURNING AN OBJECT CONTAINING ALL THE INFO NEEDED TO ADD IT TO MY WEBSITE FEED
+
+// Generate Spotify object from an Embed Link 
+function generateSpotifyObject(embedLink, caption) {
+    const srcRegex = embedLink.match(/src="[^"]+"/)[0];
+    const frameborderRegex = embedLink.match(/frameborder="[^"]+"/)[0];
+    const allowtransparencyRegex = embedLink.match(/allowtransparency="[^"]+"/)[0];
+    const allowRegex = embedLink.match(/allow="[^"]+"/)[0];
+
+    let object = {
+        type: "spotify",
+        address: srcRegex.substring(5, srcRegex.length - 1),
+        frameborder: frameborderRegex.substring(13, frameborderRegex.length -1),
+        allowtransparency: allowtransparencyRegex.substring(19, allowtransparencyRegex.length -1),
+        allow: allowRegex.substring(7, allowRegex.length - 1),
+        caption: caption
+
+    }
+    return object;
+}
+
+// Generate image object given an image location
+function generateImageObject(imageLocation, caption, link=0) {
+    let object = {
+        type: "image",
+        address: imageLocation,
+        caption: caption,
+        link: link
+
+    }
+    return object;
+}
+
+// CODE FOR ADDING THE MASTER OBJECT TO MY FEED
+
+// Loops through the master object and adds each object to my feed, 
+function addDictToFeed(feedObjects) {
+    for (i = 0; i < feedObjects.length; i++) {
+        let newImageCaptionDiv = document.createElement("div");
+        newImageCaptionDiv.classList.add("image-and-caption");
+
+        let caption = document.createElement("p");
+        let captionTextNode = document.createTextNode(feedObjects[i].caption);
+        caption.appendChild(captionTextNode);
+        newImageCaptionDiv.appendChild(caption);
     
+        if (feedObjects[i].type == "image") {
+            let image = document.createElement("img");
+            image.classList.add("feed-styling");
+            image.src = feedObjects[i].address;
+            newImageCaptionDiv.appendChild(image);
+        } else if (feedObjects[i].type == "spotify") {
+            let iframe = document.createElement("iframe");
+            iframe.classList.add("feed-styling");
+            iframe.src = feedObjects[i].address;
+            iframe.frameborder = feedObjects[i].frameborder;
+            iframe.allowtransparency = feedObjects[i].allowtransparency;
+            iframe.allow = feedObjects[i].allow;
+            newImageCaptionDiv.appendChild(iframe);
+        } else {
+            console.warn("object type is not correctly assigned or handled")
+        }
+
+        sidebar.appendChild(newImageCaptionDiv);
+    }
 }
 
-// Example object
-let objectOne = {
-    imageAddress: "link",
-    caption: "This is the caption for my image one",
-    hyperlink: "hyperlink"
-}
+addDictToFeed(sidebarObject);
 
-// Test object
-let objectTwo = {
-    imageAddress: "./resources/images/shche_-team-Gl695fYRRH8-unsplash.jpg",
-    caption: "My added image"
-}
-console.log(objectTwo.caption);
+// CODE FOR MAKING THE CAPTIONS VISIBLE WHEN OBJECTS ARE HOVERED OVER
 
-/*<iframe src="https://open.spotify.com/embed/track/0lwkL0G07NYtLrQCugi8lX" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>*/
-
-let pineapple = {
-    imageAddress: 'https://open.spotify.com/embed/track/0lwkL0G07NYtLrQCugi8lX',
-    caption: "Cant get enough of this track at the moment",
-    width: "250",
-    height: "auto",
-    frameborder: "0",
-    allowtransparency: "true"
-    //allow: "encrypted-media"
-}
-
-//Function to add object to Feed
-function addToFeed(object) {
-    let newImageCaptionDiv = document.createElement("div");
-    newImageCaptionDiv.classList.add("image-and-caption");
-
-    let caption = document.createElement("p");
-    let captionTextNode = document.createTextNode(object.caption);
-    caption.appendChild(captionTextNode);
-    newImageCaptionDiv.appendChild(caption);
-    
-    let image = document.createElement("img");
-    image.src = object.imageAddress;
-    newImageCaptionDiv.appendChild(image);
-
-    sidebar.appendChild(newImageCaptionDiv);
-}
-
-//Function to add object to Feed
-function addIframeToFeed(object) {
-    let newImageCaptionDiv = document.createElement("div");
-    newImageCaptionDiv.classList.add("image-and-caption");
-
-    let caption = document.createElement("p");
-    let captionTextNode = document.createTextNode(object.caption);
-    caption.appendChild(captionTextNode);
-    newImageCaptionDiv.appendChild(caption);
-    
-    let iframe = document.createElement("iframe");
-    iframe.src = object.imageAddress;
-    iframe.width = object.width;
-    /*iframe.height = object.height;*/
-    iframe.frameborder = object.frameborder;
-    iframe.allowtransparency = object.allowtransparency;
-    iframe.allow = object.allow;
-    newImageCaptionDiv.appendChild(iframe);
-
-    sidebar.appendChild(newImageCaptionDiv);
-}
-
-addToFeed(objectTwo);
-addIframeToFeed(pineapple);
-
-// CODE FOR MAKING THE CAPTIONS VISIBLE WHEN IMAGES ARE HOVERED OVER
+// Function to hide the sibling of the hovered over element - here the sibling is the accompanying caption
 function hideCaption(event) {
     let parent = event.target.parentElement;
     let para = parent.getElementsByTagName("p");
     para[0].style.visibility = "hidden";
     console.log("event triggered");
-
 }
 
+// Function to show the sibling of the hovered over element - here the sibling is the accompayning caption
 function showCaption(event) {
     let parent = event.target.parentElement;
     let para = parent.getElementsByTagName("p");
@@ -106,6 +103,7 @@ function showCaption(event) {
     console.log("event triggered");
 }
 
+// Loop over the objects in the master object container, identify the image/visual element, and assing the functions to the mouse events
 for (i = 0; i < feedObjects.length; i++) {
     let targetObject;
     if (feedObjects[i].querySelector("h1") != null) {
@@ -114,27 +112,15 @@ for (i = 0; i < feedObjects.length; i++) {
         targetObject = feedObjects[i].querySelector("img");
     } else if (feedObjects[i].querySelector("iframe") != null) {
         targetObject = feedObjects[i].querySelector("iframe");
+    } else if (feedObjects[i].querySelector(".instagram-embed") != null) {
+        targetObject = feedObjects[i].querySelector(".instagram-embed");
     }
 
     targetObject.addEventListener("mouseover", function (event) {
         showCaption(event); })
     targetObject.addEventListener("mouseout", function (event) {
         hideCaption(event); })
-
-
-    /*let children = feedObjects[i].getElementsByTagName("img");
-    console.log(children);
-    children[0].addEventListener("mouseover", function (event) {
-        showCaption(event); })
-    children[0].addEventListener("mouseout", function (event) {
-        hideCaption(event); })*/
 }
-
-// get child nodes
-// for every img child node
-// add event listener with div[i] passed in
-// in function, access div[i].p
-
 
 
 
@@ -151,3 +137,6 @@ sidebar.addEventListener("click", function () {
 
 // Just checking the JS has loaded
 window.onload = () => {console.log("js loaded")};
+
+
+// instead of adding to feed one at a time, make a list of dictionaries, then add to feed in one go
