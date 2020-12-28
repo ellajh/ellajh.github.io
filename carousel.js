@@ -92,6 +92,8 @@ function hideCaption(event) {
     let parent = event.target.parentElement;
     let para = parent.getElementsByTagName("p");
     para[0].style.visibility = "hidden";
+    event.target.style.opacity = 0.5;
+    event.target.style.backgroundColor = "rgb(100, 100, 100)";
     console.log("event triggered");
 }
 
@@ -100,10 +102,12 @@ function showCaption(event) {
     let parent = event.target.parentElement;
     let para = parent.getElementsByTagName("p");
     para[0].style.visibility = "visible";
+    event.target.style.opacity = 1;
+    event.target.style.backgroundColor = "rgb(100, 100, 100, 0.5)";
     console.log("event triggered");
 }
 
-// Loop over the objects in the master object container, identify the image/visual element, and assing the functions to the mouse events
+// Loop over the objects in the master object container, identify the image/visual element, and assign the functions to the mouse events
 for (i = 0; i < feedObjects.length; i++) {
     let targetObject;
     if (feedObjects[i].querySelector("h1") != null) {

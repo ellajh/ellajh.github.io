@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Anaheim';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Anaheim'), local('Anaheim-Regular'), url(https://fonts.gstatic.com/s/anaheim/v7/8vII7w042Wp87g4G4UPeEQ.woff2) format('woff2');
+}
+
 
 body {
   border: 3px solid black;
@@ -16,13 +23,16 @@ body {
   align-items: flex-end;
   
   height: 100%;
-  width: 400px;
+  width: 450px;
   position: fixed;
   z-index: 1;
   top: 0;
   right: 0;
-  background: rgba(76, 175, 80, 0.3);
+  background: rgba(182, 184, 182, 0.3);
   overflow-x: hidden;
+
+  font-family: serif;
+  color: white;
 }
 
 .sidebar > .feed {
@@ -46,10 +56,13 @@ body {
   width: 250px;
   height: auto;
   margin: 0px;
-  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   border: none;
-  background-color: gray;
-  opacity: 1;
+  background-color: rgb(100,100,100);
+  opacity: 0.5;
 }
 
 .image-and-caption {
@@ -62,6 +75,7 @@ body {
   align-self: center;
   margin: 10px;
   text-align: right;
+  color: black;
 
   visibility: hidden;
 }
@@ -74,13 +88,13 @@ body {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  background-color: gray;
+  background-color: rgb(100,100,100);
 }
 
 /* CSS FOR PAGE 1 */
 
 .page1-container {
-  border: 3px solid black;
+  /*border: 3px solid black;*/
   height: 100vh;
   display: grid;
   /*grid-template-columns: 1fr minmax(200px, auto);*/
@@ -92,7 +106,7 @@ body {
 }
 
 .page1-container > * {
-  border: 3px solid black;
+  /*border: 3px solid black;*/
 }
 
 .page1-header-area {                       /*I am a flexbox*/
@@ -100,7 +114,7 @@ body {
   display: flex;
   justify-content: center;
 
-  padding-right: 400px;
+  padding-right: 450px;
   padding-left: 0px;
 }
 .page1-nav-area {                       /*I am a flexbox*/
@@ -109,20 +123,31 @@ body {
   justify-content: space-around;
   align-content: center;
 
-  padding-right: 400px;
+  padding-right: 450px;
   padding-left: 0px;
 }
-.page1-sidebar-area {
-  grid-area: feed;
-  height: 100%;
-  width: 160px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  right: 0;
-}
+
 .page1-content-area {
+  /*border: solid black 3px;*/
   grid-area: main;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  margin-right: 450px;
+}
+
+.page1-content {
+  /*border: solid black 3px;*/
+  flex: 0 1 400px;
+  margin: 20px;
+  
+
+  background-color: cadetblue;
+}
+
+.page1-content p {
+  /*background-color: cadetblue;*/
 }
 
 .page1-nav-area nav {                 /*I am a flex box and a flex item*/
@@ -152,7 +177,7 @@ h1 {
 /* CSS FOR PAGE 2 */ 
 
 .page2-container {
-  border: 3px solid black;
+  /*border: 3px solid black;*/
   height: 100vh;
   background-color: cadetblue;
   display: grid;
@@ -165,7 +190,7 @@ h1 {
 }
 
 .page2-container > * {
-  border: 3px solid black;
+  /*border: 3px solid black;*/
 }
 
 .page2-header-area {                       /*I am a flexbox*/
@@ -173,7 +198,7 @@ h1 {
   display: flex;
   justify-content: center;
 
-  padding-right: 400px;
+  padding-right: 450px;
   padding-left: 0px;
 }
 .page2-nav-area {                       /*I am a flexbox*/
@@ -182,7 +207,7 @@ h1 {
   justify-content: space-around;
   align-content: center;
 
-  padding-right: 400px;
+  padding-right: 450px;
   padding-left: 0px;
 }
 /*.area-2c {
@@ -191,8 +216,14 @@ h1 {
 
 .page2-content-area {
   grid-area: main;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 
+    "time-lapse text"
+    "caption text";
 
-  padding-right: 400px;
+  padding-right: 450px;
   padding-left: 0px;
 }
 
