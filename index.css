@@ -130,6 +130,22 @@ body {
   padding-right: 450px;
 }
 
+.sidebar-show-button {
+  display: none;
+  position: fixed;
+  margin: 10px;
+  bottom: 0;
+  right: 0;
+}
+
+.sidebar-hide-button {
+  display: none;
+  position: fixed;
+  margin-right: 450px;
+  bottom: 0;
+  right: 0;
+}
+
 /* CSS FOR PAGE 1 */
 
 h1 {
@@ -635,11 +651,12 @@ margin: 0px;
 }
 
 .page5-content-area {
+  border: 3px solid black;
   grid-area: main;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   overflow: scroll;
 
   -ms-overflow-style: none; /* Hides scrollbar for IE and Edge */
@@ -653,7 +670,7 @@ margin: 0px;
 }
 
 .page5-content {
-    /*border: solid black 3px;*/
+    /*border: solid pink 3px;*/
     
     height: 90%;
     margin: 20px;
@@ -664,7 +681,7 @@ margin: 0px;
     -ms-overflow-style: none; /* Hides scrollbar for IE and Edge */
     scrollbar-width: none; /* Hides scrollbar for Firefox */
   
-    background-color:rgb(207, 155, 12);
+    /*background-color:rgb(207, 155, 12);*/
   }
   
 .page5-content::-webkit-scrollbar {
@@ -673,16 +690,44 @@ margin: 0px;
 
 
 .page5-content-area > * {
-  border: 3px solid black;
+  /*border: 3px solid black;*/
 }
 
 .timelapse-pics {
-
+  display: flex;
+  justify-content: center;
 }
 
 .timelapse-pics img {
-  height: 100%;
+  border: 3px solid black;
+  height: calc(100% - 6px);
   display: none;
+}
+
+#first-timelapse-img {
+  display: block;
+}
+
+#page5-content2 {
+  border: solid 3px blue;
+  display: flex;
+  justify-content: space-around;
+  margin: 30px;
+}
+
+#page5-content2 > * {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.page5-content-buttonbox {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  font-family: 'Glenn-Sans-Black';
+  margin: 5px;
 }
 
 /* MEDIA QUERIES */
@@ -703,6 +748,37 @@ margin: 0px;
   }
 
   .sidebar-shift {
-    padding-right: 50px;
+    padding-right: 100px;
   }
+
+  .sidebar-show-button {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 1401px) {
+  .sidebar-hide-button {
+    display: none !important;
+  }
+
+  .sidebar-show-button {
+    display: none !important;
+  }
+
+  .sidebar {
+    visibility: visible !important;
+    background-color: rgb(182, 184, 182, 0.3) !important;
+  }
+
+  .sidebar .button-box {
+    opacity: 0.5 !important;
+    background-color: rgb(100, 100, 100) !important;
+  }
+
+  .sidebar .sidebar-title {
+    opacity: 0.5 !important;
+    background-color: rgb(100, 100, 100) !important;
+  }
+
+
 }

@@ -3,6 +3,7 @@
 let sidebar = document.getElementsByClassName("feed")[0];
 // Getting and assigning my feed element to variable "feed"
 let feedObjects = document.getElementsByClassName("image-and-caption");
+console.log(feedObjects);
 
 // Creating an master object containing all the items that I want to add to my feed as child objects
 let sidebarObject = [
@@ -127,16 +128,67 @@ for (i = 0; i < feedObjects.length; i++) {
         hideCaption(event); })
 }
 
-// Timelapse code
+// SHOW HIDE SIDEBAR CODE
+
+let sidebarElement = document.getElementsByClassName("sidebar")[0];
+console.log(sidebarElement.children);
+let sidebarShowButton = document.getElementsByClassName("sidebar-show-button")[0];
+let sidebarHideButton = document.getElementsByClassName("sidebar-hide-button")[0];
+let buttonBox = document.getElementsByClassName("button-box")[0];
+let sidebarHeader = document.getElementsByClassName("sidebar-title")[0];
+
+function showSidebar() {
+    sidebarElement.style.visibility = "visible";
+    
+    document.getElementsByClassName("sidebar")[0].style.backgroundColor = "rgb(160, 160, 160)";
+    buttonBox.style.opacity = 1;
+    buttonBox.style.backgroundColor = "rgb(130, 130, 130)";
+    sidebarHeader.style.opacity = 1;
+    sidebarHeader.style.backgroundColor = "rgb(130, 130, 130)";
+    
+    sidebarShowButton.style.display = "none";
+    sidebarHideButton.style.display = "block";
+}
+
+function hideSidebar() {
+    sidebarElement.style.visibility = "hidden";
+
+    document.getElementsByClassName("sidebar")[0].style.backgroundColor = "rgb(182, 184, 182, 0.3)";
+    buttonBox.style.opacity = 0.5;
+    buttonBox.style.backgroundColor = "rgb(100, 100, 100)";
+    sidebarHeader.style.opacity = 0.5;
+    sidebarHeader.style.backgroundColor = "rgb(100, 100, 100)";
+
+    sidebarShowButton.style.display = "block";
+    sidebarHideButton.style.display = "none";
+}
+
+sidebarShowButton.addEventListener("click", showSidebar);
+sidebarHideButton.addEventListener("click", hideSidebar);
+
+// TIMELAPSE CODE
 
 let timelapseClass = document.getElementsByClassName("timelapse-pics");
 let timelapseImages = timelapseClass[0].children;
+let timelapseStartButton = document.getElementById("timelapse-button-start");
+let timelapseStopButton = document.getElementById("timelapse-button-stop");
 let inProgress = false;
 console.log(timelapseClass);
 console.log(timelapseImages);
 console.log(timelapseImages[0]);
 
-function timeLapse() {
+let myVar = 0;
+
+function stopButton() {
+    console.log("stop function called");
+    if (inProgress == true) {
+        inProgress = false;
+        console.log("inProgress set to" + inProgress);
+    }
+    clearInterval(myVar);
+}
+
+/*function timeLapse() {
     if (inProgress == false) {
         inProgress = true;
         console.log("timelapse Function entered");
@@ -166,16 +218,51 @@ function timeLapse() {
                     }
                 }   
             }
-        }, 500)
+        }, 5000)
+    }
+}*/
+
+let k = 0;
+
+function playTimeLapse() {
+    console.log("Interval function entered");
+    console.log(inProgress);
+    if (inProgress == true) {
+        console.log("k =" + k);
+        if (k == 0) {
+            k++;
+        } else {
+            let previous = k - 1;
+            console.log("Updating image");
+            console.log("Index" + previous + "changed to none");
+            timelapseImages[previous].style.display = "none";
+            console.log("Index" + k + "shown");
+            timelapseImages[k].style.display = "block";
+            if (k < timelapseImages.length - 1) {
+                k++;
+            } else {
+                inProgress = false;
+                timelapseImages[k].style.display = "none";
+                timelapseImages[0].style.display = "block"
+                clearInterval(myVar);
+                k = 0;
+            }
+        }   
     }
 }
 
-document.body.addEventListener("click", timeLapse);
+function timeLapse() {
+    if (inProgress == false) {
+        inProgress = true;
+        console.log("timelapse Function entered");
+        let k = 0;
+        console.log(k);
+        myVar = setInterval(playTimeLapse, 500);
+    }
+}
 
-/*document.body.addEventListener("click", function() {
-    console.log("function working");
-    timelapseImages[0].style.display = "block";
-})*/
+timelapseStartButton.addEventListener("click", timeLapse);
+timelapseStopButton.addEventListener("click", stopButton);
 
 
 
