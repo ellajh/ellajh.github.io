@@ -19,6 +19,7 @@ console.log(sidebarObject);
 // CODE FOR TAKING A LINK TO AN RESOURCE AND RETURNING AN OBJECT CONTAINING ALL THE INFO NEEDED TO ADD IT TO MY WEBSITE FEED
 
 // Generate Spotify object from an Embed Link 
+// Extracts only the information required from the Embed Link
 function generateSpotifyObject(embedLink, caption) {
     const srcRegex = embedLink.match(/src="[^"]+"/)[0];
     const frameborderRegex = embedLink.match(/frameborder="[^"]+"/)[0];
@@ -37,7 +38,7 @@ function generateSpotifyObject(embedLink, caption) {
     return object;
 }
 
-// Generate image object given an image location
+// Generate image object given an image location, caption, and optional hyperlink
 function generateImageObject(imageLocation, caption, link=0) {
     let object = {
         type: "image",
@@ -126,7 +127,55 @@ for (i = 0; i < feedObjects.length; i++) {
         hideCaption(event); })
 }
 
+// Timelapse code
 
+let timelapseClass = document.getElementsByClassName("timelapse-pics");
+let timelapseImages = timelapseClass[0].children;
+let inProgress = false;
+console.log(timelapseClass);
+console.log(timelapseImages);
+console.log(timelapseImages[0]);
+
+function timeLapse() {
+    if (inProgress == false) {
+        inProgress = true;
+        console.log("timelapse Function entered");
+        let k = 0;
+        console.log(k);
+        setInterval(function() {
+            console.log("Interval function entered");
+            console.log(inProgress);
+            if (inProgress == true) {
+                console.log("k =" + k);
+                if (k == 0) {
+                    console.log("K = 0, function starting");
+                    console.log(timelapseImages[k]);
+                    timelapseImages[k].style.display = "block";
+                    k++;
+                } else {
+                    let previous = k - 1;
+                    console.log("Updating image");
+                    console.log("Index" + previous + "changed to none");
+                    timelapseImages[previous].style.display = "none";
+                    console.log("Index" + k + "shown");
+                    timelapseImages[k].style.display = "block";
+                    if (k < timelapseImages.length - 1) {
+                        k++;
+                    } else {
+                        k = 0;
+                    }
+                }   
+            }
+        }, 500)
+    }
+}
+
+document.body.addEventListener("click", timeLapse);
+
+/*document.body.addEventListener("click", function() {
+    console.log("function working");
+    timelapseImages[0].style.display = "block";
+})*/
 
 
 
