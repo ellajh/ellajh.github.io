@@ -1,9 +1,10 @@
 
+// SIDEBAR CREATION CODE
+
 // Getting and assigning my sidebar element to variable "sidebar"
 let sidebar = document.getElementsByClassName("feed")[0];
 // Getting and assigning my feed element to variable "feed"
 let feedObjects = document.getElementsByClassName("image-and-caption");
-console.log(feedObjects);
 
 // Creating an master object containing all the items that I want to add to my feed as child objects
 let sidebarObject = [
@@ -14,8 +15,6 @@ let sidebarObject = [
 ]
 
 console.log(sidebarObject);
-
-
 
 // CODE FOR TAKING A LINK TO AN RESOURCE AND RETURNING AN OBJECT CONTAINING ALL THE INFO NEEDED TO ADD IT TO MY WEBSITE FEED
 
@@ -46,7 +45,6 @@ function generateImageObject(imageLocation, caption, link=0) {
         address: imageLocation,
         caption: caption,
         link: link
-
     }
     return object;
 }
@@ -80,7 +78,6 @@ function addDictToFeed(feedObjects) {
         } else {
             console.warn("object type is not correctly assigned or handled")
         }
-
         sidebar.appendChild(newImageCaptionDiv);
     }
 }
@@ -128,10 +125,9 @@ for (i = 0; i < feedObjects.length; i++) {
         hideCaption(event); })
 }
 
-// SHOW HIDE SIDEBAR CODE
+// SHOW AND HIDE THE SIDEBAR CODE
 
 let sidebarElement = document.getElementsByClassName("sidebar")[0];
-console.log(sidebarElement.children);
 let sidebarShowButton = document.getElementsByClassName("sidebar-show-button")[0];
 let sidebarHideButton = document.getElementsByClassName("sidebar-hide-button")[0];
 let buttonBox = document.getElementsByClassName("button-box")[0];
@@ -166,18 +162,15 @@ function hideSidebar() {
 sidebarShowButton.addEventListener("click", showSidebar);
 sidebarHideButton.addEventListener("click", hideSidebar);
 
-// TIMELAPSE CODE
+// WEBSITE TIMELAPSE CODE
 
 let timelapseClass = document.getElementsByClassName("timelapse-pics");
 let timelapseImages = timelapseClass[0].children;
 let timelapseStartButton = document.getElementById("timelapse-button-start");
 let timelapseStopButton = document.getElementById("timelapse-button-stop");
 let inProgress = false;
-console.log(timelapseClass);
-console.log(timelapseImages);
-console.log(timelapseImages[0]);
-
 let myVar = 0;
+let k = 0;
 
 function stopButton() {
     console.log("stop function called");
@@ -187,42 +180,6 @@ function stopButton() {
     }
     clearInterval(myVar);
 }
-
-/*function timeLapse() {
-    if (inProgress == false) {
-        inProgress = true;
-        console.log("timelapse Function entered");
-        let k = 0;
-        console.log(k);
-        setInterval(function() {
-            console.log("Interval function entered");
-            console.log(inProgress);
-            if (inProgress == true) {
-                console.log("k =" + k);
-                if (k == 0) {
-                    console.log("K = 0, function starting");
-                    console.log(timelapseImages[k]);
-                    timelapseImages[k].style.display = "block";
-                    k++;
-                } else {
-                    let previous = k - 1;
-                    console.log("Updating image");
-                    console.log("Index" + previous + "changed to none");
-                    timelapseImages[previous].style.display = "none";
-                    console.log("Index" + k + "shown");
-                    timelapseImages[k].style.display = "block";
-                    if (k < timelapseImages.length - 1) {
-                        k++;
-                    } else {
-                        k = 0;
-                    }
-                }   
-            }
-        }, 5000)
-    }
-}*/
-
-let k = 0;
 
 function playTimeLapse() {
     console.log("Interval function entered");
@@ -267,16 +224,7 @@ timelapseStopButton.addEventListener("click", stopButton);
 
 
 
-// Just some stuff to check I am correctly selecting elements
-function testElement(element) {
-    element.style.backgroundColor = "red";
-}
-sidebar.addEventListener("click", function () {
-    testElement(sidebar);
-})
-
 // Just checking the JS has loaded
 window.onload = () => {console.log("js loaded")};
 
 
-// instead of adding to feed one at a time, make a list of dictionaries, then add to feed in one go
