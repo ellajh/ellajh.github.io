@@ -88,16 +88,20 @@ addDictToFeed(sidebarObject);
 
 // Function to hide the sibling of the hovered over element - here the sibling is the accompanying caption
 function hideCaption(event) {
-    let parent = event.target.parentElement;
-    let para = parent.getElementsByTagName("p");
-    para[0].style.visibility = "hidden";
+    if (sidebarElement.width < 300) {
+        let parent = event.target.parentElement;
+        let para = parent.getElementsByTagName("p");
+        para[0].style.visibility = "hidden";
+    }
     event.target.style.opacity = 0.5;
     event.target.style.backgroundColor = "rgb(100, 100, 100)";
     console.log("event triggered");
+    
 }
 
 // Function to show the sibling of the hovered over element - here the sibling is the accompayning caption
 function showCaption(event) {
+    /*if (sidebarElement.width > 300) {*/
     let parent = event.target.parentElement;
     let para = parent.getElementsByTagName("p");
     para[0].style.visibility = "visible";
@@ -132,9 +136,20 @@ let sidebarShowButton = document.getElementsByClassName("sidebar-show-button")[0
 let sidebarHideButton = document.getElementsByClassName("sidebar-hide-button")[0];
 let buttonBox = document.getElementsByClassName("button-box")[0];
 let sidebarHeader = document.getElementsByClassName("sidebar-title")[0];
+let captions = document.getElementsByClassName("image-and-caption");
+console.log(captions);
+
 
 function showSidebar() {
     sidebarElement.style.visibility = "visible";
+    if (sidebarElement.offsetWidth < 300) {
+        for (i = 0; i < feedObjects.length; i++) {
+            let par = feedObjects[i].getElementsByTagName("p")
+            console.log(par)
+            par[0].style.visibility = "visible";
+        }
+
+    }
     
     document.getElementsByClassName("sidebar")[0].style.backgroundColor = "rgb(160, 160, 160)";
     buttonBox.style.opacity = 1;

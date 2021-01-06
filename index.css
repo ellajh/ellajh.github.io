@@ -35,7 +35,7 @@ body * {
 /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 .sidebar {
-  /*border: 3px solid pink;*/
+  border: 3px solid pink;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -64,6 +64,7 @@ body * {
 }
 
 .sidebar > .feed {
+  border: solid blue 3px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -93,12 +94,15 @@ body * {
 }
 
 .image-and-caption {
+  border: solid green 3px;
   width: 100%;
   display: flex;
+  flex-wrap: wrap-reverse;
   justify-content: flex-end;
 }
 
 .image-and-caption p {
+  border: solid purple 3px;
   align-self: center;
   margin: 10px;
   text-align: right;
@@ -129,7 +133,7 @@ body * {
 .sidebar-hide-button {
   display: none;
   position: fixed;
-  z-index: 2;
+  z-index: 1;
   margin-right: 450px;
   bottom: 0;
   right: 0;
@@ -329,10 +333,10 @@ body * {
   display: none; /* Hides scrollbar for Chrome, Safari, and Opera */
 }
 
-/*.timelapse-pics {                       /* I am a flexbox */
-  /*display: flex;
+.timelapse-pics {                       /* I am a flexbox */
+  display: flex;
   justify-content: center;
-}*/
+}
 
 .page5-content-area img {
   border: 3px solid black;
@@ -482,15 +486,11 @@ h1 {
   }
 }
 
-@media screen and (max-width: 450px) {
-  .sidebar {
-    width: 100vw;
-  }
-}
 
 @media screen and (max-width: 540px) {
   .sidebar-hide-button {
-    margin-right: 0;
+    
+    margin-right: 0px;
   }
 }
 
@@ -509,6 +509,17 @@ h1 {
     font-size: 70px;
   }
 }
+
+@media screen and (max-width: 470px) {
+  .sidebar {
+    width: 290px;
+  }
+
+  /*.image-and-caption > p {
+    visibility: visible !important;
+  }*/
+}
+
 @media screen and (min-width: 426px) and (max-width: 600px) {
   .page-header-area > h1 {
     font-size: 17vw;
@@ -554,7 +565,7 @@ h1 {
   }
 }
 
-@media screen and (max-width: 1399px) and (min-width: 581px) {
+@media screen and (max-width: 1399px) and (min-width: 300px) {
   .sidebar-show-button {
     display: block;
   }
