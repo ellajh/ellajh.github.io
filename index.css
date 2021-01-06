@@ -19,9 +19,16 @@
 }
 
 body {
-  border: 3px solid black;
+  border: 3px solid blue;
+  min-width: 575px;
+  /*width: 100vw;*/
   font-family: 'Glenn-Sans-Light';
   margin: 0px;
+  /*overflow-x: hidden;*/
+}
+
+body * {
+  /*border: none !important;*/
 }
 
 /* CSS FOR THE SIDEBAR ELEMENT */
@@ -111,14 +118,10 @@ body {
   background-color: rgb(100,100,100);
 }
 
-.sidebar-shift {
-  padding-right: 450px;
-}
-
 .sidebar-show-button {
   display: none;
   position: fixed;
-  margin: 10px;
+  margin: 5px;
   bottom: 0;
   right: 0;
 }
@@ -126,102 +129,41 @@ body {
 .sidebar-hide-button {
   display: none;
   position: fixed;
+  z-index: 2;
   margin-right: 450px;
   bottom: 0;
   right: 0;
 }
 
+.sidebar-shift {
+  padding-right: 450px;
+}
+
 /* CSS FOR PAGE 1 */
 /*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-.page1-container {
+#p1 {
   /*border: 3px solid pink;*/
-  height: 100vh;
-  margin: 0px;
-  padding: 0px;
-  display: grid;
-  /*grid-template-columns: 1fr minmax(200px, auto);*/
-  grid-template-rows: minmax(300px, auto) minmax(100px, auto) minmax(200px, auto);
-  grid-template-areas:
-    "header"
-    "nav"
-    "main";
 }
 
-.page1-container > * {
-  /*border: 3px solid black;*/
-}
-
-.page1-header-area {                       /*I am a flexbox*/
-  /*border: solid red 3px;*/
-  grid-area: header;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding-left: 0px;
-}
-
-.page1-header-area h1 {
+.page-header-area > .page1-header {
   /*border: solid blue 3px;*/
-  font-family: 'Glenn-Sans-Extra-Bold';
   font-size: 150px;
-  margin: 0px;
-  padding: 0px;
-}
-
-.page1-nav-area {                       /*I am a flexbox*/
-  grid-area: nav;
-  display: flex;
-  justify-content: space-around;
-  align-content: center;
-  padding-left: 0px;
-}
-
-.page1-nav-area nav {                 /*I am a flex box and a flex item*/
-  /*border: 3px solid black;*/
-  display: flex;
-  align-items: center;
-}
-
-.page1-nav-area nav ul {              /*I am a flex box and a flex item*/
-  /*border: 3px solid black;*/
-  display: flex;
-  list-style-position: inside;
-  list-style-type: none;
-  padding: 0px;
-
-  font-family: 'Glenn-Sans-Black';
-}
-
-.page1-nav-area nav ul li {
-  /*border: 3px solid black;*/
-  margin: 2px;
 }
 
 .page1-content-area {
-  /*border: solid green 3px;*/
-  grid-area: main;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: flex-start;
-  overflow: scroll;
-
-  -ms-overflow-style: none; /* Hides scrollbar for IE and Edge */
-  scrollbar-width: none; /* Hides scrollbar for Firefox */
-}
-
-.page1-content-area::-webkit-scrollbar {
-  display: none; /* Hides scrollbar for Chrome, Safari, and Opera */
+  align-items: stretch;
 }
 
 .page1-content {
-  /*border: solid black 3px;*/
+  border: solid black 3px;
   flex: 0 1 400px;
-  height: 90%;
+  /*height: 90%;*/
   margin: 20px;
-  margin-bottom: 20px;
-  margin-top: 0px;
+  margin-bottom: 10px;
 
   overflow: scroll;
   -ms-overflow-style: none; /* Hides scrollbar for IE and Edge */
@@ -248,72 +190,12 @@ body {
 /* CSS FOR PAGE 2 */ 
 /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-.page2-container {                     /* I am a grid */
-  /*border: 3px solid black;*/
-  height: 100vh;
+#p2 {                     /* I am a grid */
   background-color: cadetblue;
-  display: grid;
-  /*grid-template-columns: 1fr minmax(200px, auto);*/
-  grid-template-rows: minmax(150px, auto) minmax(100px, auto) 1fr;
-  grid-template-areas:
-    "header"
-    "nav"
-    "main";
-}
-
-.page2-container > * {
-  /*border: 3px solid black;*/
-}
-
-.page2-header-area {                   /*I am a flexbox*/
-  grid-area: header;
-  display: flex;
-  justify-content: flex-start;
-}
-
-.page2-header-area h1 {
-  font-family: 'Glenn-Sans-Extra-Bold';
-  font-size: 100px;
-  padding: 0px;
-  margin: 0px;
-}
-
-.page2-nav-area {                      /*I am a flexbox*/
-  border: solid 3px blue;
-  grid-area: nav;
-  display: flex;
-  justify-content: space-around;
-  align-content: center;
-
-  padding-right: 450px;
-  padding-left: 0px;
-}
-
-.page2-nav-area nav {                 /*I am a flexbox */
-  border: 3px solid black;
-  display: flex;
-  align-items: center;
-}
-
-.page2-nav-area nav ul {              /*I am a flex box */
-  /*border: 3px solid black;*/
-  display: flex;
-  list-style-position: inside;
-  list-style-type: none;
-  padding: 0px;
-
-  font-family: 'Glenn-Sans-Black';
-}
-
-.page2-nav-area nav ul li {
-  /*border: 3px solid black;*/
-  margin: 2px;
 }
 
 .page2-content-area {                 /* I am a grid */
-  grid-area: main;
-  height: 80%;
-  margin: 50px;
+  height: 100%;
 
   display: grid;
   grid-template-rows: 1fr 1fr;
@@ -321,115 +203,44 @@ body {
   grid-template-areas: 
     "area-a area-b"
     "area-a area-c";
-  row-gap: 50px;
-  column-gap: 50px;
-  padding-right: 450px;
-  padding-left: 0px;
+}
+
+.page2-content-area > * {
+  border: solid black 3px;
+  background-color: white;
+  margin: 30px;
 }
 
 .page2-content-a {
   grid-area: area-a;
-  background-color: white;
-  /*margin: 20px;*/
 }
 
 .page2-content-b {
   grid-area: area-b;
-  background-color: white;
-  /*margin: 20px;*/
 }
 
 .page2-content-c {
   grid-area: area-c;
-  background-color: white;
-  /*margin: 20px;*/
-}
-
-.page2-content-area > * {
-  border: 3px solid black;
 }
 
 /* CSS FOR PAGE 3 */
 /*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-.page3-container {                        /* I am a grid */
-  /*border: 3px solid black;*/
-  height: 100vh;
-  display: grid;
-  /*grid-template-columns: 1fr minmax(200px, auto);*/
-  grid-template-rows: minmax(150px, auto) minmax(100px, auto) 1fr;
-  grid-template-areas:
-    "header"
-    "nav"
-    "main";
-}
-
-.page3-header-area {                       /* I am a flexbox */
-  grid-area: header;
-  display: flex;
-  justify-content: flex-start;
-  padding-left: 0px;
-}
-
-.page3-header-area h1 {
-  font-family: 'Glenn-Sans-Extra-Bold';
-  font-size: 100px;
-  padding: 0px;
-  margin: 0px;
-}
-
-.page3-nav-area {                       /*I am a flexbox*/
-  grid-area: nav;
-  display: flex;
-  justify-content: space-around;
-  align-content: center;
-}
-
-.page3-nav-area nav {                 /* I am a flexbox */
-  /*border: 3px solid black;*/
-  display: flex;
-  align-items: center;
-
-}
-
-.page3-nav-area nav ul {              /* I am a flexbox */
-  /*border: 3px solid black;*/
-  display: flex;
-  list-style-position: inside;
-  list-style-type: none;
-  padding: 0px;
-
-  font-family: 'Glenn-Sans-Black';
-}
-
-.page3-nav-area nav ul li {
-  /*border: 3px solid black;*/
-  margin: 2px;
-}
-
 .page3-content-area {                 /* I am a flexbox */
-  grid-area: main;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: flex-start;
+  align-items: stretch;
   overflow: scroll;
-
-  -ms-overflow-style: none; /* Hides scrollbar for IE and Edge */
-  scrollbar-width: none; /* Hides scrollbar for Firefox */
-}
-
-.page3-content-area::-webkit-scrollbar {
-  display: none; /* Hides scrollbar for Chrome, Safari, and Opera */
 }
 
 .page3-content {
     /*border: solid black 3px;*/
     flex: 0 1 400px;
-    height: 90%;
+   
     margin: 20px;
-    margin-bottom: 20px;
-    margin-top: 0px;
+    margin-top: 10px;
+    margin-bottom: 10px;
   
     overflow: scroll;
     -ms-overflow-style: none; /* Hides scrollbar for IE and Edge */
@@ -442,7 +253,6 @@ body {
   display: none; /* Hides scrollbar for Chrome, Safari, and Opera */
 }
 
-
 .page3-content-area > * {
   border: 3px solid black;
 }
@@ -450,189 +260,61 @@ body {
 /* CSS FOR PAGE 4 */
 /*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-.page4-container {
-  /*border: 3px solid black;*/
-  height: 100vh;
+#p4 {
   background-color: rgb(207, 155, 12);
-  display: grid;
-  /*grid-template-columns: 1fr minmax(200px, auto);*/
-  grid-template-rows: minmax(150px, auto) minmax(100px, auto) 1fr;
-  grid-template-areas:
-    "header"
-    "nav"
-    "main";
 }
 
-.page4-container > * {
-  /*border: 3px solid black;*/
-}
-
-.page4-header-area {                   /*I am a flexbox*/
-  grid-area: header;
-  display: flex;
-  justify-content: flex-start;
-}
-
-.page4-header-area h1 {
-  font-family: 'Glenn-Sans-Extra-Bold';
-  font-size: 100px;
-  padding: 0px;
-  margin: 0px;
-}
-
-.page4-nav-area {                      /* I am a flexbox*/
-  grid-area: nav;
-  display: flex;
-  justify-content: space-around;
-  align-content: center;
-}
-
-.page4-nav-area nav {                  /* I am a flexbox */
-  /*border: 3px solid black;*/
-  display: flex;
-  align-items: center;
-
-}
-
-.page4-nav-area nav ul {               /* I am a flexbox */
-  /*border: 3px solid black;*/
-  display: flex;
-  list-style-position: inside;
-  list-style-type: none;
-  padding: 0px;
-
-  font-family: 'Glenn-Sans-Black';
-}
-
-.page4-nav-area nav ul li {
-  /*border: 3px solid black;*/
-  margin: 2px;
+#p4 > * {
+  border: 3px solid black;
 }
 
 .page4-content-area {                  /* I am a grid */
-  grid-area: main;
-  height: 80%;
-  margin: 50px;
-
+  height: 100%;
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 1fr;
   grid-template-areas: 
     "area-a area-b"
     "area-a area-c";
-  row-gap: 50px;
-  column-gap: 50px;
-  padding-right: 450px;
-  padding-left: 0px;
+}
+
+.page4-content-area > * {
+  border: black solid 3px;
+  background-color: white;
+  margin: 30px;
 }
 
 .page4-content-a {
   grid-area: area-a;
-  background-color: white;
-  /*margin: 20px;*/
 }
 
 .page4-content-b {
   grid-area: area-b;
-  background-color: white;
-  /*margin: 20px;*/
 }
 
 .page4-content-c {
   grid-area: area-c;
-  background-color: white;
-  /*margin: 20px;*/
-}
-
-.page4-content-area > * {
-  border: 3px solid black;
 }
 
 /* CSS FOR PAGE 5 */
 /*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-.page5-container {                      /* I am a grid */
-  /*border: 3px solid black;*/
-  height: 100vh;
-  display: grid;
-  /*grid-template-columns: 1fr minmax(200px, auto);*/
-  grid-template-rows: minmax(150px, auto) minmax(100px, auto) 1fr;
-  grid-template-areas:
-    "header"
-    "nav"
-    "main";
-}
-
-.page5-header-area {                     /* I am a flexbox*/
-  grid-area: header;
-  display: flex;
-  justify-content: flex-start;
-  padding-left: 0px;
-}
-
-.page5-header-area h1 {
-  font-family: 'Glenn-Sans-Extra-Bold';
-  font-size: 100px;
-  padding: 0px;
-  margin: 0px;
-}
-
-.page5-nav-area {                       /* I am a flexbox */
-  grid-area: nav;
-  display: flex;
-  justify-content: space-around;
-  align-content: center;
-
-  padding-right: 450px;
-  padding-left: 0px;
-}
-
-.page5-nav-area nav {                  /* I am a flexbox */
-  /*border: 3px solid black;*/
-  display: flex;
-  align-items: center;
-
-}
-
-.page5-nav-area nav ul {                /* I am a flexbox */
-  /*border: 3px solid black;*/
-  display: flex;
-  list-style-position: inside;
-  list-style-type: none;
-  padding: 0px;
-
-  font-family: 'Glenn-Sans-Black';
-}
-
-.page5-nav-area nav ul li {
-  /*border: 3px solid black;*/
-  margin: 2px;
+#p5 {                      /* I am a grid */
+  background-color: cadetblue;
 }
 
 .page5-content-area {                   /* I am a flexbox */
-  border: 3px solid black;
-  grid-area: main;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow: scroll;
-
-  -ms-overflow-style: none; /* Hides scrollbar for IE and Edge */
-  scrollbar-width: none; /* Hides scrollbar for Firefox */
-
-}
-
-.page5-content-area::-webkit-scrollbar {
-  display: none; /* Hides scrollbar for Chrome, Safari, and Opera */
-
 }
 
 .page5-content {
-    /*border: solid pink 3px;*/
-    height: 90%;
+    border: solid pink 3px;
+    /*height: calc(100% - 40px);*/
     margin: 20px;
-    margin-bottom: 20px;
     margin-top: 0px;
   
     overflow: scroll;
@@ -646,11 +328,6 @@ body {
   display: none; /* Hides scrollbar for Chrome, Safari, and Opera */
 }
 
-
-.page5-content-area > * {
-  /*border: 3px solid black;*/
-}
-
 .timelapse-pics {                       /* I am a flexbox */
   display: flex;
   justify-content: center;
@@ -658,7 +335,9 @@ body {
 
 .timelapse-pics img {
   border: 3px solid black;
-  height: calc(100% - 6px);
+  /*height: calc(100% - 6px);*/
+  height: 50vw;
+  max-height: 500px;
   display: none;
 }
 
@@ -667,10 +346,12 @@ body {
 }
 
 #page5-content2 {                       /* I am a flexbox */
-  border: solid 3px blue;
   display: flex;
   justify-content: space-around;
-  margin: 30px;
+  flex-wrap: wrap;
+  margin: 10px;
+
+  background-color: white;
 }
 
 #page5-content2 > * {
@@ -681,14 +362,92 @@ body {
 .page5-content-buttonbox {              /* I am a flexbox */
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 /* CSS FOR OTHER GENERAL ELEMENTS */
 /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
+.page-container {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: minmax(150px, auto) minmax(100px, auto) 1fr;
+  grid-template-areas:
+    "header"
+    "nav"
+    "main";
+}
+
+.page-header-area {                       /*I am a flexbox*/
+  border: solid red 3px;
+  grid-area: header;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-left: 0px;
+  font-family: 'Glenn-Sans-Extra-Bold';
+  font-size: 100px;
+}
+
+.page-header-area h1 {
+  font-size: 100px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.page-nav-area {                       /*I am a flexbox*/
+  /*border: 3px solid purple;*/
+  grid-area: nav;
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  padding-left: 0px;
+}
+
+.page-nav-area nav {                 /*I am a flex box and a flex item*/
+  /*border: 3px solid black;*/
+  display: flex;
+  align-items: center;
+}
+
+.page-nav-area nav ul {              /*I am a flex box and a flex item*/
+  /*border: 3px solid black;*/
+  display: flex;
+  list-style-position: inside;
+  list-style-type: none;
+  padding: 0px;
+
+  font-family: 'Glenn-Sans-Black';
+}
+
+.page-nav-area nav ul li {
+  /*border: 3px solid black;*/
+  margin: 2px;
+}
+
+.page-content-area {
+  border: solid green 3px;
+  grid-area: main;
+  margin-bottom: 20px;
+
+  overflow: scroll;
+
+
+  -ms-overflow-style: none; /* Hides scrollbar for IE and Edge */
+  scrollbar-width: none; /* Hides scrollbar for Firefox */
+}
+
+.page-content-area::-webkit-scrollbar {
+  display: none; /* Hides scrollbar for Chrome, Safari, and Opera */
+}
+
 button {
   font-family: 'Glenn-Sans-Black';
   margin: 5px;
+  height: minmax(25px - auto);
+  width: minmax(60px, auto);
+
 }
 
 a {
@@ -701,18 +460,94 @@ a:hover {
 }
 
 h1 {
-  border: 3px solid blue;
+  /*border: 3px solid blue;*/
 }
 
 /* MEDIA QUERIES */
 
 @media screen and (max-height: 600px) {
-  .page1-container {
+  .page-container {
     height: auto;
   }
 
   .page1-content {
+    height: auto;
+  }
+
+  .page5-content {
     height: 500px;
+  }
+}
+
+@media screen and (max-width: 540px) {}
+  .sidebar-hide-button {
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .sidebar-show-button {
+    display: none;
+  }
+
+  .sidebar-shift {
+    padding-right: 0px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .page-header-area > h1 {
+    font-size: 70px;
+  }
+}
+@media screen and (min-width: 426px) and (max-width: 600px) {
+  .page-header-area > h1 {
+    font-size: 17vw;
+  }
+
+}
+ 
+@media screen and (max-width: 815px) {
+  .page-header-area > .page1-header {
+    font-size: 18vw;
+  }
+
+  .page1-content {
+    /*width: minmax(100px, 80vw);*/
+  }
+}
+
+/*@media screen and (max-width: 875px) {
+  .page1-nav-area {
+    justify-content: flex-start;
+    margin: 5px;
+  }
+
+  .page1-nav-area nav ul {
+    flex-direction: column;
+  }
+}*/
+
+@media screen and (max-width: 784px) {
+  .page-nav-area {
+    justify-content: flex-start;
+    margin: 5px;
+  }
+
+  .page-nav-area nav ul {
+    flex-direction: column;
+  }
+}
+
+@media screen and (min-width: 785px) {
+  .first-nav::before {
+    content: "//";
+  }
+}
+
+@media screen and (max-width: 1399px) and (min-width: 581px) {
+  .sidebar-show-button {
+    display: block;
   }
 }
 
@@ -722,12 +557,9 @@ h1 {
   }
 
   .sidebar-shift {
-    padding-right: 100px;
+    padding-right: 0px;
   }
 
-  .sidebar-show-button {
-    display: block;
-  }
 }
 
 @media screen and (min-width: 1401px) {
