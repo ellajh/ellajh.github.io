@@ -301,6 +301,7 @@ body * {
 
 #p5 {                      /* I am a grid */
   background-color: cadetblue;
+  height: auto !important;
 }
 
 .page5-content-area {                   /* I am a flexbox */
@@ -308,7 +309,6 @@ body * {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow: scroll;
 }
 
 /*.page5-content {
@@ -432,6 +432,7 @@ body * {
   border: solid green 3px;
   grid-area: main;
   margin-bottom: 20px;
+  height: auto;
 
   overflow: scroll;
 
@@ -467,7 +468,7 @@ h1 {
 
 /* MEDIA QUERIES */
 
-@media screen and (max-height: 600px) {
+@media screen and (max-height: 750px) {
   .page-container {
     height: auto;
   }
