@@ -482,13 +482,19 @@ h1 {
   }
 }
 
-@media screen and (max-width: 540px) {}
+@media screen and (max-width: 450px) {
+  .sidebar {
+    width: 100vw;
+  }
+}
+
+@media screen and (max-width: 540px) {
   .sidebar-hide-button {
     margin-right: 0;
   }
 }
 
-@media screen and (max-width: 580px) {
+/*@media screen and (max-width: 580px) {
   .sidebar-show-button {
     display: none;
   }
@@ -496,7 +502,7 @@ h1 {
   .sidebar-shift {
     padding-right: 0px;
   }
-}
+}*/
 
 @media screen and (max-width: 425px) {
   .page-header-area > h1 {
