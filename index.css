@@ -19,8 +19,7 @@
 }
 
 body {
-  border: 3px solid blue;
-  min-width: 575px;
+  /*min-width: 575px;*/
   /*width: 100vw;*/
   font-family: 'Glenn-Sans-Light';
   margin: 0px;
@@ -34,8 +33,7 @@ body * {
 /* CSS FOR THE SIDEBAR ELEMENT */
 /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-.sidebar {
-  border: 3px solid pink;
+.sidebar {                       /* I am a flexbox */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -64,7 +62,6 @@ body * {
 }
 
 .sidebar > .feed {
-  border: solid blue 3px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -94,15 +91,13 @@ body * {
 }
 
 .image-and-caption {
-  border: solid green 3px;
   width: 100%;
   display: flex;
-  flex-wrap: wrap-reverse;
+  flex-wrap: nowrap;
   justify-content: flex-end;
 }
 
 .image-and-caption p {
-  border: solid purple 3px;
   align-self: center;
   margin: 10px;
   text-align: right;
@@ -119,6 +114,7 @@ body * {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+
   background-color: rgb(100,100,100);
 }
 
@@ -146,38 +142,12 @@ body * {
 /* CSS FOR PAGE 1 */
 /*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-#p1 {
-  /*border: 3px solid pink;*/
-}
-
 .page-header-area > .page1-header {
-  /*border: solid blue 3px;*/
   font-size: 150px;
 }
 
-.page1-content-area {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: stretch;
-}
-
 .page1-content {
-  border: solid black 3px;
-  flex: 0 1 400px;
-  /*height: 90%;*/
-  margin: 20px;
-  margin-bottom: 10px;
-
-  overflow: scroll;
-  -ms-overflow-style: none; /* Hides scrollbar for IE and Edge */
-  scrollbar-width: none; /* Hides scrollbar for Firefox */
-
   background-color: cadetblue;
-}
-
-.page1-content::-webkit-scrollbar {
-  display: none; /* Hides scrollbar for Chrome, Safari, and Opera */
 }
 
 .page1-content p {
@@ -194,25 +164,8 @@ body * {
 /* CSS FOR PAGE 2 */ 
 /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-#p2 {                     /* I am a grid */
+#p2 {                     
   background-color: cadetblue;
-}
-
-.page2-content-area {                 /* I am a grid */
-  height: 100%;
-
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas: 
-    "area-a area-b"
-    "area-a area-c";
-}
-
-.page2-content-area > * {
-  border: solid black 3px;
-  background-color: white;
-  margin: 30px;
 }
 
 .page2-content-a {
@@ -230,62 +183,19 @@ body * {
 /* CSS FOR PAGE 3 */
 /*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-.page3-content-area {                 /* I am a flexbox */
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: stretch;
+#page3-content-area {
   overflow: scroll;
 }
 
 .page3-content {
-    /*border: solid black 3px;*/
-    flex: 0 1 400px;
-   
-    margin: 20px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  
-    overflow: scroll;
-    -ms-overflow-style: none; /* Hides scrollbar for IE and Edge */
-    scrollbar-width: none; /* Hides scrollbar for Firefox */
-  
     background-color:rgb(207, 155, 12);
   }
-  
-.page3-content::-webkit-scrollbar {
-  display: none; /* Hides scrollbar for Chrome, Safari, and Opera */
-}
-
-.page3-content-area > * {
-  border: 3px solid black;
-}
 
 /* CSS FOR PAGE 4 */
 /*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 #p4 {
   background-color: rgb(207, 155, 12);
-}
-
-#p4 > * {
-  border: 3px solid black;
-}
-
-.page4-content-area {                  /* I am a grid */
-  height: 100%;
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas: 
-    "area-a area-b"
-    "area-a area-c";
-}
-
-.page4-content-area > * {
-  border: black solid 3px;
-  background-color: white;
-  margin: 30px;
 }
 
 .page4-content-a {
@@ -303,12 +213,12 @@ body * {
 /* CSS FOR PAGE 5 */
 /*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-#p5 {                      /* I am a grid */
+#p5 {                     
   background-color: cadetblue;
   height: auto !important;
 }
 
-.page5-content-area {                   /* I am a flexbox */
+#page5-content-area {               /* I am a flexbox */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -328,21 +238,17 @@ body * {
   
     /*background-color:rgb(207, 155, 12);*/
   }
-  
-.page5-content::-webkit-scrollbar {
-  display: none; /* Hides scrollbar for Chrome, Safari, and Opera */
-}
 
-.timelapse-pics {                       /* I am a flexbox */
+.timelapse-pics {                     /* I am a flexbox */
   display: flex;
   justify-content: center;
 }
 
-.page5-content-area img {
-  border: 3px solid black;
+.timelapse-pics img {
+  border: 3px solid black !important;
   /*height: calc(100% - 6px);*/
   height: 50vw;
-  min-height: 300px;
+  min-height: 250px;
   max-height: 500px;
   display: none;
 }
@@ -360,7 +266,7 @@ body * {
   background-color: white;
 }
 
-#page5-content2 > * {
+#page5-content2 p {
   margin-left: 20px;
   margin-right: 20px;
 }
@@ -369,6 +275,30 @@ body * {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* CSS FOR SHOW WORKINGS BUTTONS */
+/*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.show-workings {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  margin: 5px;
+  margin-bottom: 45px;
+
+  display: flex;
+  flex-direction: column-reverse;
+
+  background-color: gray;
+}
+
+.show-workings .selection-area {
+  display: none;
+  flex-direction: column;
+
+  /*visibility: hidden;*/
+
 }
 
 /* CSS FOR OTHER GENERAL ELEMENTS */
@@ -385,7 +315,6 @@ body * {
 }
 
 .page-header-area {                       /*I am a flexbox*/
-  border: solid red 3px;
   grid-area: header;
 
   display: flex;
@@ -403,7 +332,6 @@ body * {
 }
 
 .page-nav-area {                       /*I am a flexbox*/
-  /*border: 3px solid purple;*/
   grid-area: nav;
   display: flex;
   justify-content: space-around;
@@ -412,13 +340,11 @@ body * {
 }
 
 .page-nav-area nav {                 /*I am a flex box and a flex item*/
-  /*border: 3px solid black;*/
   display: flex;
   align-items: center;
 }
 
 .page-nav-area nav ul {              /*I am a flex box and a flex item*/
-  /*border: 3px solid black;*/
   display: flex;
   list-style-position: inside;
   list-style-type: none;
@@ -428,12 +354,10 @@ body * {
 }
 
 .page-nav-area nav ul li {
-  /*border: 3px solid black;*/
   margin: 2px;
 }
 
 .page-content-area {
-  border: solid green 3px;
   grid-area: main;
   margin-bottom: 20px;
   height: auto;
@@ -448,6 +372,58 @@ body * {
 .page-content-area::-webkit-scrollbar {
   display: none; /* Hides scrollbar for Chrome, Safari, and Opera */
 }
+
+.flex-content-area {                 /* I am a flexbox */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.grid-content-area {                  /* I am a grid */
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 
+    "area-a area-b"
+    "area-a area-c";
+}
+
+.grid-content-area > * {
+  border: solid black 3px;
+  background-color: white;
+  margin: 30px;
+}
+
+.alt-content-area {                 /* I am a flexbox */
+  display: none;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  overflow: scroll;
+}
+
+.flex-content {
+  border: solid black 3px;
+  height: 100%;
+}
+
+.box-for-border {
+  margin: 20px;
+  margin-bottom: 10px;
+  flex: 0 1 400px;
+
+  /*overflow: scroll;*/
+  -ms-overflow-style: none; /* Hides scrollbar for IE and Edge */
+  scrollbar-width: none; /* Hides scrollbar for Firefox */
+}
+
+.box-for-border::-webkit-scrollbar {
+  display: none; /* Hides scrollbar for Chrome, Safari, and Opera */
+}
+
+
 
 button {
   font-family: 'Glenn-Sans-Black';
@@ -504,9 +480,9 @@ h1 {
   }
 }*/
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 349px) {
   .page-header-area > h1 {
-    font-size: 70px;
+    font-size: 60px;
   }
 }
 
@@ -515,12 +491,16 @@ h1 {
     width: 290px;
   }
 
+  .image-and-caption {
+    flex-wrap: wrap-reverse;
+  }
+
   /*.image-and-caption > p {
-    visibility: visible !important;
+    visibility: visible;
   }*/
 }
 
-@media screen and (min-width: 426px) and (max-width: 600px) {
+@media screen and (min-width: 350px) and (max-width: 600px) {
   .page-header-area > h1 {
     font-size: 17vw;
   }
@@ -557,11 +537,23 @@ h1 {
   .page-nav-area nav ul {
     flex-direction: column;
   }
+
+  .grid-content-area {
+    display: none;
+  }
+
+  .alt-content-area {
+    display: flex;
+  }
 }
 
 @media screen and (min-width: 785px) {
   .first-nav::before {
     content: "//";
+  }
+
+  .grid-content-area {
+    display: grid;
   }
 }
 
@@ -579,7 +571,6 @@ h1 {
   .sidebar-shift {
     padding-right: 0px;
   }
-
 }
 
 @media screen and (min-width: 1401px) {
@@ -594,6 +585,10 @@ h1 {
   .sidebar {
     visibility: visible !important;
     background-color: rgb(182, 184, 182, 0.3) !important;
+  }
+
+  .sidebar .feed .image-and-caption p {
+    visibility: hidden;
   }
 
   .sidebar .button-box {

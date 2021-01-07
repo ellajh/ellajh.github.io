@@ -14,8 +14,6 @@ let sidebarObject = [
     generateSpotifyObject('<iframe src="https://open.spotify.com/embed/album/7s5HYHvCsWsbLFsr3smBiQ" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>', 'Always one of my favourite peaceful electronic albums to work to'),
 ]
 
-console.log(sidebarObject);
-
 // CODE FOR TAKING A LINK TO AN RESOURCE AND RETURNING AN OBJECT CONTAINING ALL THE INFO NEEDED TO ADD IT TO MY WEBSITE FEED
 
 // Generate Spotify object from an Embed Link 
@@ -56,8 +54,11 @@ function addDictToFeed(feedObjects) {
     for (i = 0; i < feedObjects.length; i++) {
         let newImageCaptionDiv = document.createElement("div");
         newImageCaptionDiv.classList.add("image-and-caption");
+        newImageCaptionDiv.classList.add("flex-border");
 
         let caption = document.createElement("p");
+        caption.classList.add("caption");
+        caption.classList.add("inline-border");
         let captionTextNode = document.createTextNode(feedObjects[i].caption);
         caption.appendChild(captionTextNode);
         newImageCaptionDiv.appendChild(caption);
@@ -65,11 +66,13 @@ function addDictToFeed(feedObjects) {
         if (feedObjects[i].type == "image") {
             let image = document.createElement("img");
             image.classList.add("feed-styling");
+            image.classList.add("inline-border");
             image.src = feedObjects[i].address;
             newImageCaptionDiv.appendChild(image);
         } else if (feedObjects[i].type == "spotify") {
             let iframe = document.createElement("iframe");
             iframe.classList.add("feed-styling");
+            iframe.classList.add("inline-border");
             iframe.src = feedObjects[i].address;
             iframe.frameborder = feedObjects[i].frameborder;
             iframe.allowtransparency = feedObjects[i].allowtransparency;
@@ -88,14 +91,17 @@ addDictToFeed(sidebarObject);
 
 // Function to hide the sibling of the hovered over element - here the sibling is the accompanying caption
 function hideCaption(event) {
-    if (sidebarElement.width < 300) {
+    console.log(sidebarElement);
+    console.log(sidebarElement.clientWidth);
+    if (sidebarElement.clientWidth > 300) {
+        console.log("hide event triggered");
         let parent = event.target.parentElement;
         let para = parent.getElementsByTagName("p");
         para[0].style.visibility = "hidden";
     }
     event.target.style.opacity = 0.5;
     event.target.style.backgroundColor = "rgb(100, 100, 100)";
-    console.log("event triggered");
+    console.log("hide function event triggered");
     
 }
 
@@ -142,7 +148,7 @@ console.log(captions);
 
 function showSidebar() {
     sidebarElement.style.visibility = "visible";
-    if (sidebarElement.offsetWidth < 300) {
+    if (sidebarElement.clientWidth < 300) {
         for (i = 0; i < feedObjects.length; i++) {
             let par = feedObjects[i].getElementsByTagName("p")
             console.log(par)
@@ -163,6 +169,11 @@ function showSidebar() {
 
 function hideSidebar() {
     sidebarElement.style.visibility = "hidden";
+    for (i = 0; i < feedObjects.length; i++) {
+        let par = feedObjects[i].getElementsByTagName("p")
+        console.log(par)
+        par[0].style.visibility = "hidden";
+    }
 
     document.getElementsByClassName("sidebar")[0].style.backgroundColor = "rgb(182, 184, 182, 0.3)";
     buttonBox.style.opacity = 0.5;
@@ -174,72 +185,29 @@ function hideSidebar() {
     sidebarHideButton.style.display = "none";
 }
 
+
+// This function makes sure the sidebar behaves as it should at different screen widths
+function sidebarActionsOnResize() {
+    if (window.innerWidth == 1400) {
+        hideSidebar();
+    }
+
+    if (window.innerWidth < 470) {
+        let captions = document.getElementsByClassName("caption");
+        for (i = 0; i < captions.length; i++) {
+            captions[i].style.visibility = "visible";
+            captions[i].style.textAlign = "center";
+        }
+    } else if (window.innerWidth >= 470) {
+        let captions = document.getElementsByClassName("caption");
+        for (i = 0; i < captions.length; i++) {
+            captions[i].style.visibility = "hidden";
+        }
+    }
+}
+
+window.addEventListener("resize", sidebarActionsOnResize);
 sidebarShowButton.addEventListener("click", showSidebar);
 sidebarHideButton.addEventListener("click", hideSidebar);
-
-// WEBSITE TIMELAPSE CODE
-
-let timelapseClass = document.getElementsByClassName("timelapse-pics");
-let timelapseImages = timelapseClass[0].children;
-let timelapseStartButton = document.getElementById("timelapse-button-start");
-let timelapseStopButton = document.getElementById("timelapse-button-stop");
-let inProgress = false;
-let myVar = 0;
-let k = 0;
-
-function stopButton() {
-    console.log("stop function called");
-    if (inProgress == true) {
-        inProgress = false;
-        console.log("inProgress set to" + inProgress);
-    }
-    clearInterval(myVar);
-}
-
-function playTimeLapse() {
-    console.log("Interval function entered");
-    console.log(inProgress);
-    if (inProgress == true) {
-        console.log("k =" + k);
-        if (k == 0) {
-            k++;
-        } else {
-            let previous = k - 1;
-            console.log("Updating image");
-            console.log("Index" + previous + "changed to none");
-            timelapseImages[previous].style.display = "none";
-            console.log("Index" + k + "shown");
-            timelapseImages[k].style.display = "block";
-            if (k < timelapseImages.length - 1) {
-                k++;
-            } else {
-                inProgress = false;
-                timelapseImages[k].style.display = "none";
-                timelapseImages[0].style.display = "block"
-                clearInterval(myVar);
-                k = 0;
-            }
-        }   
-    }
-}
-
-function timeLapse() {
-    if (inProgress == false) {
-        inProgress = true;
-        console.log("timelapse Function entered");
-        let k = 0;
-        console.log(k);
-        myVar = setInterval(playTimeLapse, 500);
-    }
-}
-
-timelapseStartButton.addEventListener("click", timeLapse);
-timelapseStopButton.addEventListener("click", stopButton);
-
-
-
-
-// Just checking the JS has loaded
-window.onload = () => {console.log("js loaded")};
 
 
