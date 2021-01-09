@@ -143,11 +143,13 @@ let sidebarHideButton = document.getElementsByClassName("sidebar-hide-button")[0
 let buttonBox = document.getElementsByClassName("button-box")[0];
 let sidebarHeader = document.getElementsByClassName("sidebar-title")[0];
 let captions = document.getElementsByClassName("image-and-caption");
+let sidebarShown = false;
 console.log(captions);
 
 
 function showSidebar() {
     sidebarElement.style.visibility = "visible";
+    sidebarShown = true;
     if (sidebarElement.clientWidth < 300) {
         for (i = 0; i < feedObjects.length; i++) {
             let par = feedObjects[i].getElementsByTagName("p")
@@ -169,6 +171,7 @@ function showSidebar() {
 
 function hideSidebar() {
     sidebarElement.style.visibility = "hidden";
+    sidebarShown = false;
     for (i = 0; i < feedObjects.length; i++) {
         let par = feedObjects[i].getElementsByTagName("p")
         console.log(par)
@@ -192,7 +195,7 @@ function sidebarActionsOnResize() {
         hideSidebar();
     }
 
-    if (window.innerWidth < 470) {
+    if (window.innerWidth < 470 && sidebarShown == true) {
         let captions = document.getElementsByClassName("caption");
         for (i = 0; i < captions.length; i++) {
             captions[i].style.visibility = "visible";

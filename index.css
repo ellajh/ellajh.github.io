@@ -142,8 +142,46 @@ body * {
 /* CSS FOR PAGE 1 */
 /*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
+#p1 {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: minmax(150px, auto) minmax(100px, auto), minmax(100px, auto) 1fr;
+  grid-template-areas:
+    "header"
+    "logos"
+    "nav"
+    "main";
+}
+
+.logos {
+  grid-area: logos;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0px;
+  padding-bottom: 20px;
+  margin-left: 5px;
+}
+
+.logos a { 
+  flex: 0 1 auto;
+  margin: 0px;
+  padding: 0px;
+  height: auto;
+}
+
+.logos img {
+  border: 3px solid black;
+  height: 50px;
+  background-color: gray;
+  margin: 5px;
+  vertical-align: bottom;
+}
+
 .page-header-area > .page1-header {
   font-size: 150px;
+  padding: 0px;
+  vertical-align: bottom;
+  line-height: 100%;
 }
 
 .page1-content {
