@@ -50,8 +50,8 @@ function generateImageObject(imageLocation, caption, link=0) {
 // CODE FOR ADDING THE MASTER OBJECT TO MY FEED
 
 // Loops through the master object and adds each object to my feed, 
-function addDictToFeed(feedObjects) {
-    for (i = 0; i < feedObjects.length; i++) {
+function addDictToFeed(objects) {
+    for (i = 0; i < objects.length; i++) {
         let newImageCaptionDiv = document.createElement("div");
         newImageCaptionDiv.classList.add("image-and-caption");
         newImageCaptionDiv.classList.add("flex-border");
@@ -59,24 +59,24 @@ function addDictToFeed(feedObjects) {
         let caption = document.createElement("p");
         caption.classList.add("caption");
         caption.classList.add("inline-border");
-        let captionTextNode = document.createTextNode(feedObjects[i].caption);
+        let captionTextNode = document.createTextNode(objects[i].caption);
         caption.appendChild(captionTextNode);
         newImageCaptionDiv.appendChild(caption);
     
-        if (feedObjects[i].type == "image") {
+        if (objects[i].type == "image") {
             let image = document.createElement("img");
             image.classList.add("feed-styling");
             image.classList.add("inline-border");
-            image.src = feedObjects[i].address;
+            image.src = objects[i].address;
             newImageCaptionDiv.appendChild(image);
-        } else if (feedObjects[i].type == "spotify") {
+        } else if (objects[i].type == "spotify") {
             let iframe = document.createElement("iframe");
             iframe.classList.add("feed-styling");
             iframe.classList.add("inline-border");
-            iframe.src = feedObjects[i].address;
-            iframe.frameborder = feedObjects[i].frameborder;
-            iframe.allowtransparency = feedObjects[i].allowtransparency;
-            iframe.allow = feedObjects[i].allow;
+            iframe.src = objects[i].address;
+            iframe.frameborder = objects[i].frameborder;
+            iframe.allowtransparency = objects[i].allowtransparency;
+            iframe.allow = objects[i].allow;
             newImageCaptionDiv.appendChild(iframe);
         } else {
             console.warn("object type is not correctly assigned or handled")
@@ -212,5 +212,58 @@ function sidebarActionsOnResize() {
 window.addEventListener("resize", sidebarActionsOnResize);
 sidebarShowButton.addEventListener("click", showSidebar);
 sidebarHideButton.addEventListener("click", hideSidebar);
+
+// Scroll buttons function for scrolling 
+
+let imageCaptionBoxes = document.getElementsByClassName("image-and-caption");
+let upButton = document.getElementById("up");
+let downButton = document.getElementById("down");
+let heights = [0];
+let cumulativeHeights = [];
+
+// Delaying getting the heights of items in my feed to give them time to render to their correct heights
+setTimeout(getHeights, 50);
+setTimeout(mapHeights, 60);
+
+function getHeights() {
+    for (i = 0; i < imageCaptionBoxes.length; i++) {
+        heights.push(imageCaptionBoxes[i].offsetHeight);
+    }
+    heights = heights.map((s => a => s += a)(0));
+
+}
+
+function mapHeights() {
+    console.log(heights);
+    cumulativeHeights = heights.map((s => a => s += a)(0));
+    console.log(cumulativeHeights)
+}
+
+let current = 0;
+
+function scrollUp() {
+    sidebar.scroll(0, cumulativeHeights[current - 1]);
+    current -= 1;
+}
+
+function scrollDown() {
+    sidebar.scroll(0, cumulativeHeights[current + 1]);
+    current += 1;
+}
+
+upButton.addEventListener("click", scrollUp);
+downButton.addEventListener("click", scrollDown);
+
+let xCoord = 0; 
+// I want to add the height of each item to an array 
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////
+
+
 
 

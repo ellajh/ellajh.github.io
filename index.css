@@ -23,11 +23,6 @@ body {
   /*width: 100vw;*/
   font-family: 'Glenn-Sans-Light';
   margin: 0px;
-  /*overflow-x: hidden;*/
-}
-
-body * {
-  /*border: none !important;*/
 }
 
 /* CSS FOR THE SIDEBAR ELEMENT */
@@ -144,6 +139,7 @@ body * {
 
 #p1 {
   height: 100vh;
+  min-height: 700px;
   display: grid;
   grid-template-rows: minmax(150px, auto) minmax(100px, auto), minmax(100px, auto) 1fr;
   grid-template-areas:
@@ -184,18 +180,18 @@ body * {
   line-height: 100%;
 }
 
+.page1-content-area {
+  overflow: scroll;
+}
+
 .page1-content {
   background-color: cadetblue;
 }
 
-.page1-content p {
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
 .page1-content h3 {
   margin: 10px;
-  padding: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   background-color: white;
 }
 
@@ -248,6 +244,17 @@ body * {
   grid-area: area-c;
 }
 
+/* CSS FOR PAGE PAGE 4.5 */
+/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+#p4-5 {
+  background-color:rgb(207, 155, 12, 0.6);
+}
+
+.p4-5-flex-content {
+  background-color: white;
+}
+
 /* CSS FOR PAGE 5 */
 /*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
@@ -263,20 +270,6 @@ body * {
   align-items: center;
 }
 
-/*.page5-content {
-    border: solid pink 3px;
-    /*height: calc(100% - 40px);*/
-    /*flex: 1 1 content;
-    margin: 20px;
-    margin-top: 0px;*/
-  
-    /*overflow: scroll;*/
-    /*-ms-overflow-style: none; /* Hides scrollbar for IE and Edge */
-    /*scrollbar-width: none;*/ /* Hides scrollbar for Firefox */
-  
-    /*background-color:rgb(207, 155, 12);*/
-  }
-
 .timelapse-pics {                     /* I am a flexbox */
   display: flex;
   justify-content: center;
@@ -284,9 +277,8 @@ body * {
 
 .timelapse-pics img {
   border: 3px solid black !important;
-  /*height: calc(100% - 6px);*/
   height: 50vw;
-  min-height: 250px;
+  min-height: 200px;
   max-height: 500px;
   display: none;
 }
@@ -402,7 +394,6 @@ body * {
 
   overflow: scroll;
 
-
   -ms-overflow-style: none; /* Hides scrollbar for IE and Edge */
   scrollbar-width: none; /* Hides scrollbar for Firefox */
 }
@@ -419,7 +410,6 @@ body * {
 }
 
 .grid-content-area {                  /* I am a grid */
-  height: 100%;
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 1fr;
@@ -445,6 +435,27 @@ body * {
 .flex-content {
   border: solid black 3px;
   height: 100%;
+
+  overflow: scroll;
+
+  -ms-overflow-style: none; /* Hides scrollbar for IE and Edge */
+  scrollbar-width: none; /* Hides scrollbar for Firefox */
+}
+
+.flex-content::-webkit-scrollbar {
+  display: none; /* Hides scrollbar for Chrome, Safari, and Opera */
+}
+
+.grid-content {
+  
+  overflow: scroll;
+
+  -ms-overflow-style: none; /* Hides scrollbar for IE and Edge */
+  scrollbar-width: none; /* Hides scrollbar for Firefox */
+}
+
+.grid-content::-webkit-scrollbar {
+  display: none; /* Hides scrollbar for Chrome, Safari, and Opera */
 }
 
 .box-for-border {
@@ -460,8 +471,6 @@ body * {
 .box-for-border::-webkit-scrollbar {
   display: none; /* Hides scrollbar for Chrome, Safari, and Opera */
 }
-
-
 
 button {
   font-family: 'Glenn-Sans-Black';
@@ -480,11 +489,16 @@ a:hover {
   opacity: 0.5;
 }
 
-h1 {
-  /*border: 3px solid blue;*/
+p {
+  margin: 10px;
+}
+
+h3 {
+  margin: 10px;
 }
 
 /* MEDIA QUERIES */
+/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 @media screen and (max-height: 750px) {
   .page-container {
@@ -500,23 +514,12 @@ h1 {
   }
 }
 
-
 @media screen and (max-width: 540px) {
   .sidebar-hide-button {
     
     margin-right: 0px;
   }
 }
-
-/*@media screen and (max-width: 580px) {
-  .sidebar-show-button {
-    display: none;
-  }
-
-  .sidebar-shift {
-    padding-right: 0px;
-  }
-}*/
 
 @media screen and (max-width: 349px) {
   .page-header-area > h1 {
@@ -533,9 +536,6 @@ h1 {
     flex-wrap: wrap-reverse;
   }
 
-  /*.image-and-caption > p {
-    visibility: visible;
-  }*/
 }
 
 @media screen and (min-width: 350px) and (max-width: 600px) {
@@ -555,17 +555,6 @@ h1 {
   }
 }
 
-/*@media screen and (max-width: 875px) {
-  .page1-nav-area {
-    justify-content: flex-start;
-    margin: 5px;
-  }
-
-  .page1-nav-area nav ul {
-    flex-direction: column;
-  }
-}*/
-
 @media screen and (max-width: 784px) {
   .page-nav-area {
     justify-content: flex-start;
@@ -580,6 +569,10 @@ h1 {
     display: none;
   }
 
+  .p4-grid-content-area {
+    display: none;
+  }
+
   .alt-content-area {
     display: flex;
   }
@@ -591,6 +584,10 @@ h1 {
   }
 
   .grid-content-area {
+    display: grid;
+  }
+
+  .p4-grid-content-area {
     display: grid;
   }
 }
@@ -639,6 +636,5 @@ h1 {
     ;
     background-color: rgb(100, 100, 100) !important;
   }
-
 
 }
