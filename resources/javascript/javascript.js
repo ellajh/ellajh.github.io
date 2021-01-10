@@ -1,7 +1,7 @@
 
 // SIDEBAR CREATION CODE
 
-// Getting and assigning my sidebar element to variable "sidebar"
+// Getting and assigning my sidebar feed element to variable "sidebar"
 let sidebar = document.getElementsByClassName("feed")[0];
 // Getting and assigning my feed element to variable "feed"
 let feedObjects = document.getElementsByClassName("image-and-caption");
@@ -9,9 +9,13 @@ let feedObjects = document.getElementsByClassName("image-and-caption");
 // Creating an master object containing all the items that I want to add to my feed as child objects
 let sidebarObject = [
     generateSpotifyObject('<iframe src="https://open.spotify.com/embed/track/0lwkL0G07NYtLrQCugi8lX" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>', "Can't get enough of Blue Lab Beats!"),
-    generateImageObject("./resources/images/shche_-team-Gl695fYRRH8-unsplash.jpg", 
-                        "My image caption goes here"),
+    generateImageObject("./resources/sidebar/computergrid.jpg", 
+                        "Super useful article on using CSS grids for responsive design", "https://uxdesign.cc/responsive-grids-and-how-to-actually-use-them-970de4c16e01"),
     generateSpotifyObject('<iframe src="https://open.spotify.com/embed/album/7s5HYHvCsWsbLFsr3smBiQ" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>', 'Always one of my favourite peaceful electronic albums to work to'),
+    generateImageObject("./resources/sidebar/stringbag.jpg", "One of my favourite sites for buying ethically made, sustainable clothing", "https://knowtheorigin.com/products/loren-cardigan-teal"),
+    generateImageObject("./resources/sidebar/bread.jpg", "This is my favourite failsafe easy bread recipe", "https://www.theperfectloaf.com/beginners-sourdough-bread/"),
+    generateSpotifyObject('<iframe src="https://open.spotify.com/embed/track/1vWaSsuHYVTiIYGA2SNWrZ" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>', "So nice and chill!"),
+    generateImageObject("./resources/sidebar/fabrics.jpg", "A great website for understanding the environmental impact of different clothing brands", "https://goodonyou.eco/")
 ]
 
 // CODE FOR TAKING A LINK TO AN RESOURCE AND RETURNING AN OBJECT CONTAINING ALL THE INFO NEEDED TO ADD IT TO MY WEBSITE FEED
@@ -64,11 +68,25 @@ function addDictToFeed(objects) {
         newImageCaptionDiv.appendChild(caption);
     
         if (objects[i].type == "image") {
+
             let image = document.createElement("img");
             image.classList.add("feed-styling");
             image.classList.add("inline-border");
             image.src = objects[i].address;
-            newImageCaptionDiv.appendChild(image);
+
+            
+
+            if (objects[i].link != 0) {
+                let anchor = document.createElement("a");
+                anchor.setAttribute("href", objects[i].link);
+                /*anchor.classList.add("feed-styling");*/
+                newImageCaptionDiv.appendChild(anchor);
+                anchor.appendChild(image);
+            } else {
+                newImageCaptionDiv.appendChild(image);
+            }
+
+
         } else if (objects[i].type == "spotify") {
             let iframe = document.createElement("iframe");
             iframe.classList.add("feed-styling");
@@ -96,6 +114,10 @@ function hideCaption(event) {
     if (sidebarElement.clientWidth > 300) {
         console.log("hide event triggered");
         let parent = event.target.parentElement;
+        if (parent.nodeName == "A") {
+            parent = parent.parentElement;
+            console.log(parent.nodeName);
+        }
         let para = parent.getElementsByTagName("p");
         para[0].style.visibility = "hidden";
     }
@@ -107,8 +129,14 @@ function hideCaption(event) {
 
 // Function to show the sibling of the hovered over element - here the sibling is the accompayning caption
 function showCaption(event) {
-    /*if (sidebarElement.width > 300) {*/
     let parent = event.target.parentElement;
+    // if we are dealing with an img inside an anchor, we actually want to set the opacity for the anchor not the img
+    if (parent.nodeName == "A") {
+        parent.style.opacity = 1;
+        // to act on the p element we will need to go up another level, to the div which is the "gandparent" of the target
+        parent = parent.parentElement;
+    }
+
     let para = parent.getElementsByTagName("p");
     para[0].style.visibility = "visible";
     event.target.style.opacity = 1;
@@ -205,6 +233,7 @@ function sidebarActionsOnResize() {
         let captions = document.getElementsByClassName("caption");
         for (i = 0; i < captions.length; i++) {
             captions[i].style.visibility = "hidden";
+            captions[i].style.textAlign = "right";
         }
     }
 }
