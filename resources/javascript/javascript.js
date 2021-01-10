@@ -74,8 +74,6 @@ function addDictToFeed(objects) {
             image.classList.add("inline-border");
             image.src = objects[i].address;
 
-            
-
             if (objects[i].link != 0) {
                 let anchor = document.createElement("a");
                 anchor.setAttribute("href", objects[i].link);
@@ -85,7 +83,6 @@ function addDictToFeed(objects) {
             } else {
                 newImageCaptionDiv.appendChild(image);
             }
-
 
         } else if (objects[i].type == "spotify") {
             let iframe = document.createElement("iframe");
@@ -109,21 +106,16 @@ addDictToFeed(sidebarObject);
 
 // Function to hide the sibling of the hovered over element - here the sibling is the accompanying caption
 function hideCaption(event) {
-    console.log(sidebarElement);
-    console.log(sidebarElement.clientWidth);
     if (sidebarElement.clientWidth > 300) {
-        console.log("hide event triggered");
         let parent = event.target.parentElement;
         if (parent.nodeName == "A") {
             parent = parent.parentElement;
-            console.log(parent.nodeName);
         }
         let para = parent.getElementsByTagName("p");
         para[0].style.visibility = "hidden";
     }
     event.target.style.opacity = 0.5;
     event.target.style.backgroundColor = "rgb(100, 100, 100)";
-    console.log("hide function event triggered");
     
 }
 
@@ -141,7 +133,6 @@ function showCaption(event) {
     para[0].style.visibility = "visible";
     event.target.style.opacity = 1;
     event.target.style.backgroundColor = "rgb(100, 100, 100, 0.5)";
-    console.log("event triggered");
 }
 
 // Loop over the objects in the master object container, identify the image/visual element, and assign the functions to the mouse events
@@ -172,8 +163,6 @@ let buttonBox = document.getElementsByClassName("button-box")[0];
 let sidebarHeader = document.getElementsByClassName("sidebar-title")[0];
 let captions = document.getElementsByClassName("image-and-caption");
 let sidebarShown = false;
-console.log(captions);
-
 
 function showSidebar() {
     sidebarElement.style.visibility = "visible";
@@ -181,7 +170,6 @@ function showSidebar() {
     if (sidebarElement.clientWidth < 300) {
         for (i = 0; i < feedObjects.length; i++) {
             let par = feedObjects[i].getElementsByTagName("p")
-            console.log(par)
             par[0].style.visibility = "visible";
         }
 
@@ -202,7 +190,6 @@ function hideSidebar() {
     sidebarShown = false;
     for (i = 0; i < feedObjects.length; i++) {
         let par = feedObjects[i].getElementsByTagName("p")
-        console.log(par)
         par[0].style.visibility = "hidden";
     }
 
@@ -258,14 +245,11 @@ function getHeights() {
     for (i = 0; i < imageCaptionBoxes.length; i++) {
         heights.push(imageCaptionBoxes[i].offsetHeight);
     }
-    heights = heights.map((s => a => s += a)(0));
-
+    /*heights = heights.map((s => a => s += a)(0));*/
 }
 
 function mapHeights() {
-    console.log(heights);
     cumulativeHeights = heights.map((s => a => s += a)(0));
-    console.log(cumulativeHeights)
 }
 
 let current = 0;

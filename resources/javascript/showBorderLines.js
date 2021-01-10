@@ -17,12 +17,10 @@ let inlinesShown = false;
 
 function showSelection() {
     if (selectionShown == false) {
-      console.log("showSelection is false");
       selectionArea.style.display = "flex";
       selectionShown = true;
       showWorkingsButton.textContent = "Hide";
     } else if (selectionShown == true) {
-        console.log("showSelection is true");
         showFlexboxes();
         showGrids();
         showInlines();

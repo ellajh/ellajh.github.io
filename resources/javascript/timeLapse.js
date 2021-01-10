@@ -41,7 +41,6 @@ function playTimeLapse() {
 function timeLapse() {
     if (inProgress == false) {
         inProgress = true;
-        console.log("timelapse Function entered");
         let k = 0;
         myVar = setInterval(playTimeLapse, 500);
     }

@@ -43,12 +43,12 @@ body {
   background: rgba(182, 184, 182, 0.3);
   overflow-x: hidden;
 
-  font-family: 'Glenn-Sans-Light';
+  font-family: 'Glenn-Sans-Light', serif;
   color: white;
 }
 
 .sidebar-title {
-  font-family: 'Glenn-Sans-Hairline-Italic';
+  font-family: 'Glenn-Sans-Hairline-Italic', serif;
 }
 
 .sidebar-title h2 {
@@ -356,7 +356,7 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   padding-left: 0px;
-  font-family: 'Glenn-Sans-Extra-Bold';
+  font-family: 'Glenn-Sans-Extra-Bold', serif;
   font-size: 100px;
 }
 
@@ -385,7 +385,7 @@ body {
   list-style-type: none;
   padding: 0px;
 
-  font-family: 'Glenn-Sans-Black';
+  font-family: 'Glenn-Sans-Black', serif;
 }
 
 .page-nav-area nav ul li {
@@ -478,7 +478,7 @@ body {
 }
 
 button {
-  font-family: 'Glenn-Sans-Black';
+  font-family: 'Glenn-Sans-Black', serif;
   margin: 5px;
   height: minmax(25px - auto);
   width: minmax(60px, auto);
